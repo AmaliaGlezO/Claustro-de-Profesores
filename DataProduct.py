@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd 
 
-# Ya trabajaremos aquí 
-# algo nuevo para probar una cosa con lo del comit
+data=pd.read_excel('antiguedad-matematica.xlsx')
+
