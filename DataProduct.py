@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd 
+import plotly.express as px
 
 data=pd.read_excel('antiguedad-matematica.xlsx')
 
@@ -27,15 +28,35 @@ if seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuerpo
     if subtema_seleccionado == "Distribución de Profesores":
         st.header("¿Cuál es la distribución de profesores por departamento?")
         st.write("Aquí se analiza la distribución de profesores por departamento.")
-        
+        newDf = data.groupby("Departamento")["Nombre y Apellidos"].count().reset_index()
+        newDf.columns = ["Departamento", "Cantidad de Personas"]
+
+        #Un gráfico de pastel para ver la cantidad de personas por departamentos
+        fig = px.pie(newDf, names='Departamento', values='Cantidad de Personas', title='Distribución por Departamento')
+
+        st.plotly_chart(fig)
+                
     elif subtema_seleccionado == "Análisis de Cargos":
         st.header("¿Cuál es la distribución de cargos en la facultad?")
         st.write("Examina cuántos profesores ocupan cada cargo (decano, profesor auxiliar, etc.).")
+        newDf1 = data.groupby("Cargo")["Nombre y Apellidos"].count().reset_index()
+        newDf1.columns = ["Cargo", "Cantidad de Profesores"]
+
+        #Un gráfico de barras para la cantidad de personas dependiendo del cargo
+        fig1 = px.bar(newDf1, x='Cargo', y='Cantidad de Profesores', title='Cantidad de Profesores por Cargo')
+
+        st.plotly_chart(fig1)
         
     elif subtema_seleccionado == "Proporción Docentes/No Docentes":
         st.header("¿Cuál es la proporción de docentes frente a no docentes?")
         st.write("Aquí se compara la cantidad de docentes frente a no docentes.")
-    
+        newDf2 = data.groupby("Clasif. Por escala")["Nombre y Apellidos"].count().reset_index()
+        newDf2.columns = ["Escala", "Cantidad de Personas"]
+
+        #Un gráfico de pastel para ver la cantidad de dependiendo de sugranos
+        fig2 = px.pie(newDf2, names='Escala', values='Cantidad de Personas', title='Proprción Docentes/No Docentes')
+
+        st.plotly_chart(fig2)
     
 elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructura de la Facultad":
     st.header("Mapeando la Estructura de la Facultad")
@@ -48,7 +69,7 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
     subtema_seleccionado = st.sidebar.radio("Subtemas de Datos", subtemas_datos)
     
     if subtema_seleccionado == "Departamento de Matemática":
-        st.header("Análisis del departamento de matemática")
+        st.header("Análisis del departamento de Matemática")
         st.write("breve explicación del departamento de matemática")
         st.divider()
 
