@@ -4,7 +4,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 from collections import Counter
 
-data=pd.read_excel('antiguedad-matematica.xlsx' )
+with open('antiguedad-matematica.csv', 'r') as f:
+    file=pd.read_csv(f)
+data=pd.DataFrame(file)
 ranges = [(20, 30), (30, 40), (40, 50), (50, 60), (60, 70), (70, 80)]
 # Sección inicial
 st.header("Análisis del claustro de profesores de MATCOM")
@@ -214,7 +216,7 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
-        
+
         st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
 
