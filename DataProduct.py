@@ -211,8 +211,10 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
+
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+        
         st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
 
@@ -282,8 +284,10 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
+
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+
         st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
 
@@ -354,8 +358,10 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
+
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+
         st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
 
