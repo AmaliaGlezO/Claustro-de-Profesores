@@ -138,6 +138,24 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")  
 
+        cant_gender1=[]#Aqui se almacena la cantidad de cada genero
+        cant_woman1=0
+        cant_man1=0
+        for i in data_filtred['Sexo']: 
+            if i=='F': 
+                cant_woman1+=1
+            if i=='M':
+                cant_man1+=1
+        cant_gender1.append(cant_man1)
+        cant_gender1.append(cant_woman1)
+
+        df1 = pd.DataFrame({
+            'Género': ['Hombres', 'Mujeres'],
+            'Cantidad': cant_gender1
+        })
+
+        fig8 = px.bar(df1, x='Género', y='Cantidad', color='Género', title='Cantidad de Hombres y Mujeres')
+        st.plotly_chart(fig8)
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
@@ -212,7 +230,27 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
 
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
+        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")  
+
+        cant_gender=[]#Aqui se almacena la cantidad de cada genero
+        cant_woman=0
+        cant_man=0
+        for i in data_filtred1['Sexo']: 
+            if i=='F': 
+                cant_woman+=1
+            if i=='M':
+                cant_man+=1
+        cant_gender.append(cant_man)
+        cant_gender.append(cant_woman)
+
+        df = pd.DataFrame({
+            'Género': ['Hombres', 'Mujeres'],
+            'Cantidad': cant_gender
+        })
+
+        fig7 = px.bar(df, x='Género', y='Cantidad', color='Género', title='Cantidad de Hombres y Mujeres')
+
+        st.plotly_chart(fig7)
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
@@ -287,6 +325,26 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
 
+        cant_gender2=[]#Aqui se almacena la cantidad de cada genero
+        cant_woman2=0
+        cant_man2=0
+        for i in data_filtred2['Sexo']: 
+            if i=='F': 
+                cant_woman2+=1
+            if i=='M':
+                cant_man2+=1
+        cant_gender2.append(cant_man2)
+        cant_gender2.append(cant_woman2)
+
+        df2= pd.DataFrame({
+            'Género': ['Hombres', 'Mujeres'],
+            'Cantidad': cant_gender2
+        })
+
+        fig9 = px.bar(df2, x='Género', y='Cantidad', color='Género', title='Cantidad de Hombres y Mujeres')
+
+        st.plotly_chart(fig9)
+
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
 
@@ -359,7 +417,27 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.plotly_chart(fig6)
 
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
+        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico") 
+
+        cant_gender3=[]#Aqui se almacena la cantidad de cada genero
+        cant_woman3=0
+        cant_man3=0
+        for i in data_filtred3['Sexo']: 
+            if i=='F': 
+                cant_woman3+=1
+            if i=='M':
+                cant_man3+=1
+        cant_gender3.append(cant_man3)
+        cant_gender3.append(cant_woman3)
+
+        df3 = pd.DataFrame({
+            'Género': ['Hombres', 'Mujeres'],
+            'Cantidad': cant_gender3
+        })
+
+        fig10 = px.bar(df3, x='Género', y='Cantidad', color='Género', title='Cantidad de Hombres y Mujeres')
+
+        st.plotly_chart(fig10)   
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
