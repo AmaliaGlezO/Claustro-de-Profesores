@@ -1,9 +1,11 @@
 import streamlit as st
 import pandas as pd 
 import plotly.express as px
+import plotly.graph_objects as go
+from collections import Counter
 
-data=pd.read_excel('antiguedad-matematica.xlsx')
-
+data=pd.read_excel('antiguedad-matematica.xlsx' )
+ranges = [(20, 30), (30, 40), (40, 50), (50, 60), (60, 70), (70, 80)]
 # Sección inicial
 st.header("Análisis del claustro de profesores de MATCOM")
 st.write("Aquí irá un texto de introducción")
@@ -61,7 +63,7 @@ if seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuerpo
 elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructura de la Facultad":
     st.header("Mapeando la Estructura de la Facultad")
     st.write("aquí va una introducción siguiendo con la historia de la estructura de la facultad y se menciona que se analizaran los departamentos")
-    st.write("Aqui va una imagen que será composición.jpg")
+    st.image('./Imagenes/composicion.jpg')
 
     st.divider()
     # Subtemas para la sección de Datos
@@ -75,10 +77,70 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
         st.write("Aqui el analisis y entre el análisis y la pregunta un grafico")
+        data_filtred=data[data['Departamento']=='Matematica']
+        ages=[] #para guardar todas las edades de los profes
+        for i in data_filtred['CI']:
+            if pd.notna(i): 
+                var = str(i)
+                year = var[:2]
+            
+                if int(year)<=24:
+                    n=2000+int(year)
+                    ages.append(2024-n)
+                else:
+                    n=1900+int(year)
+                    ages.append(2024-n)
+        age_counter = Counter()
+        for i in ages:
+            for start, end in ranges:
+                if start <= i <= end:
+                    age_counter[(start, end)] += 1
+                    break
+
+        frequency = [age_counter[i] for i in ranges]
+        
+        fig3 = go.Figure()
+        fig3.add_trace(go.Bar(
+            x=[f'{start}-{end}' for start, end in ranges],
+            y=frequency,
+            name='Edades',
+            marker_color='skyblue'
+        ))
+
+        average = pd.Series(ages).mean()
+
+        for start, end in ranges:
+            if start <= average <= end:
+                average_range = (start, end)
+                break
+
+        fig3.add_shape(
+            type="line",
+            x0=f'{average_range[0]}-{average_range[1]}',
+            y0=0,
+            x1=f'{average_range[0]}-{average_range[1]}',
+            y1=max(frequency),
+            line=dict(color='red', dash='dash'),
+            name=f'Promedio: {average:.2f}'
+        )
+
+        fig3.update_layout(
+            title='Frecuencia y promedio de las edades de los profesores',
+            xaxis_title='Rango de Edad',
+            yaxis_title='Frecuencia',
+            legend_title='Leyenda'
+        )
+
+        st.plotly_chart(fig3)
+
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
+        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")  
+
+
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+
+
         st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
         
@@ -89,6 +151,64 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+
+        data_filtred1=data[data['Departamento']=='Matematica Aplicada']
+        ages1=[] 
+        for i in data_filtred1['CI']:
+            if pd.notna(i): 
+                var1 = str(i)
+                year1 = var1[:2]
+            
+                if int(year1)<=24:
+                    n=2000+int(year1)
+                    ages1.append(2024-n)
+                else:
+                    n=1900+int(year1)
+                    ages1.append(2024-n)
+        age_counter1 = Counter()
+        for i in ages1:
+            for start, end in ranges:
+                if start <= i <= end:
+                    age_counter1[(start, end)] += 1
+                    break
+
+        frequency1 = [age_counter1[i] for i in ranges]
+        
+        fig4 = go.Figure()
+        fig4.add_trace(go.Bar(
+            x=[f'{start}-{end}' for start, end in ranges],
+            y=frequency1,
+            name='Edades',
+            marker_color='skyblue'
+        ))
+
+        average1 = pd.Series(ages1).mean()
+
+        for start, end in ranges:
+            if start <= average1 <= end:
+                average_range = (start, end)
+                break
+
+        fig4.add_shape(
+            type="line",
+            x0=f'{average_range[0]}-{average_range[1]}',
+            y0=0,
+            x1=f'{average_range[0]}-{average_range[1]}',
+            y1=max(frequency1),
+            line=dict(color='red', dash='dash'),
+            name=f'Promedio: {average1:.2f}'
+        )
+
+        fig4.update_layout(
+            title='Frecuencia y promedio de las edades de los profesores',
+            xaxis_title='Rango de Edad',
+            yaxis_title='Frecuencia',
+            legend_title='Leyenda'
+        )
+
+        st.plotly_chart(fig4)
+
+
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
@@ -103,6 +223,63 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+
+        data_filtred2=data[data['Departamento']=='Computacion I']
+        ages2=[] 
+        for i in data_filtred2['CI']:
+            if pd.notna(i): 
+                var2 = str(i)
+                year2 = var2[:2]
+            
+                if int(year2)<=24:
+                    n=2000+int(year2)
+                    ages2.append(2024-n)
+                else:
+                    n=1900+int(year2)
+                    ages2.append(2024-n)
+        age_counter2 = Counter()
+        for i in ages2:
+            for start, end in ranges:
+                if start <= i <= end:
+                    age_counter2[(start, end)] += 1
+                    break
+
+        frequency2 = [age_counter2[i] for i in ranges]
+        
+        fig5 = go.Figure()
+        fig5.add_trace(go.Bar(
+            x=[f'{start}-{end}' for start, end in ranges],
+            y=frequency2,
+            name='Edades',
+            marker_color='skyblue'
+        ))
+
+        average2 = pd.Series(ages2).mean()
+
+        for start, end in ranges:
+            if start <= average2 <= end:
+                average_range = (start, end)
+                break
+
+        fig5.add_shape(
+            type="line",
+            x0=f'{average_range[0]}-{average_range[1]}',
+            y0=0,
+            x1=f'{average_range[0]}-{average_range[1]}',
+            y1=max(frequency2),
+            line=dict(color='red', dash='dash'),
+            name=f'Promedio: {average2:.2f}'
+        )
+
+        fig5.update_layout(
+            title='Frecuencia y promedio de las edades de los profesores',
+            xaxis_title='Rango de Edad',
+            yaxis_title='Frecuencia',
+            legend_title='Leyenda'
+        )
+
+        st.plotly_chart(fig5)
+
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
@@ -118,6 +295,63 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+
+        data_filtred3=data[data['Departamento']=='Computacion II']
+        ages3=[] 
+        for i in data_filtred3['CI']:
+            if pd.notna(i): 
+                var3 = str(i)
+                year3 = var3[:2]
+            
+                if int(year3)<=24:
+                    n=2000+int(year3)
+                    ages3.append(2024-n)
+                else:
+                    n=1900+int(year3)
+                    ages3.append(2024-n)
+        age_counter3 = Counter()
+        for i in ages3:
+            for start, end in ranges:
+                if start <= i <= end:
+                    age_counter3[(start, end)] += 1
+                    break
+
+        frequency3 = [age_counter3[i] for i in ranges]
+        
+        fig6 = go.Figure()
+        fig6.add_trace(go.Bar(
+            x=[f'{start}-{end}' for start, end in ranges],
+            y=frequency3,
+            name='Edades',
+            marker_color='skyblue'
+        ))
+
+        average3 = pd.Series(ages3).mean()
+        
+        for start, end in ranges:
+            if start <= average3 <= end:
+                average_range = (start, end)
+                break
+        
+        fig6.add_shape(
+                type="line",
+                x0=f'{average_range[0]}-{average_range[1]}',
+                y0=0,
+                x1=f'{average_range[0]}-{average_range[1]}',
+                y1=max(frequency3),
+                line=dict(color='red', dash='dash'),
+                name=f'Promedio: {average3:.2f}'
+            )
+
+        fig6.update_layout(
+            title='Frecuencia y promedio de las edades de los profesores',
+            xaxis_title='Rango de Edad',
+            yaxis_title='Frecuencia',
+            legend_title='Leyenda'
+        )
+
+        st.plotly_chart(fig6)
+
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
@@ -136,8 +370,6 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
     st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
     st.markdown("### 3.¿Qué porcentaje de profesores participa en grupos de investigación?")
     st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
-    
-import streamlit as st
 
 # Sección seleccionada
 if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo del Profesorado":
