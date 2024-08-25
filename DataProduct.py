@@ -492,10 +492,28 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
         st.markdown("### ¿Cómo varía la antigüedad promedio de los profesores según su cargo?")
         st.write("Compara la antigüedad de los profesores en diferentes cargos (decano, profesor titular, profesor auxiliar, etc.).")
     
+    
     elif opcion_seleccionada == "2. Género y Cargo":
         st.markdown("### ¿Existen diferencias en la distribución de género según el cargo en la facultad?")
         st.write("Analiza si hay una representación equitativa de géneros en los distintos niveles de cargo.")
-    
+
+        # Agrupar por cargo y sexo, y contar la cantidad de cada uno
+        distribucion_genero = data.groupby(['Cargo', 'Sexo']).size().reset_index(name='Cantidad')
+        # Crear el gráfico de pastel en forma de anillo
+        fig = px.sunburst(distribucion_genero, 
+                          path=['Cargo', 'Sexo'], 
+                          values='Cantidad', 
+                          title='Distribución de Género según Cargo',
+                          color='Cantidad',
+                          color_continuous_scale=px.colors.sequential.Viridis)
+
+        # Personalizar el diseño del gráfico
+        fig.update_traces(hoverinfo='label+value+percent entry')
+        fig.update_layout(margin=dict(t=50, l=0, r=0, b=0))
+
+        # Mostrar el gráfico en Streamlit
+        st.plotly_chart(fig)
+
     elif opcion_seleccionada == "3. Categoría Científica y Participación en Investigación":
         st.markdown("### ¿Los profesores con categorías científicas más altas participan más en grupos de investigación?")
         st.write("Compara la participación en investigación entre diferentes categorías científicas.")
@@ -512,6 +530,30 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
         st.markdown("### ¿Cómo se distribuyen los diferentes cargos entre los departamentos?")
         st.write("Analiza si ciertos departamentos tienen más profesores en posiciones de liderazgo.")
     
+        # Agrupar por departamento y cargo, y contar la cantidad de cada uno
+        distribucion_cargos_departamento = data.groupby(['Departamento', 'Cargo']).size().reset_index(name='Cantidad')
+
+            # Crear el gráfico de barras apiladas
+        fig = px.bar(distribucion_cargos_departamento, 
+                     x='Departamento', 
+                     y='Cantidad', 
+                     color='Cargo',
+                     barmode='stack',
+                     title='Distribución de Cargos por Departamento',
+                     labels={'Departamento': 'Departamento', 'Cantidad': 'Cantidad de Profesores', 'Cargo': 'Cargo'})
+
+        # Personalizar el diseño del gráfico
+        fig.update_layout(
+            plot_bgcolor='white',
+            paper_bgcolor='white',
+            font_color='black',
+            xaxis_tickangle=-45
+        )
+
+        # Mostrar el gráfico en Streamlit
+        st.plotly_chart(fig)
+
+
     elif opcion_seleccionada == "7. Comparación de Género en Programas de Maestría":
         st.markdown("### ¿Cuál es la proporción de hombres y mujeres que enseñan en programas de maestría?")
         st.write("Examina si hay diferencias significativas en la representación de género en la enseñanza de maestría.")
