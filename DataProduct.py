@@ -3,23 +3,59 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from collections import Counter
+import matplotlib.pyplot as plt
+from streamlit_folium import st_folium
+import folium 
 
 with open('antiguedad-matematica.csv', 'r') as f:
     file=pd.read_csv(f)
 data=pd.DataFrame(file)
 ranges = [(20, 30), (30, 40), (40, 50), (50, 60), (60, 70), (70, 80)]
+
 # Sección inicial
 st.header("Análisis del claustro de profesores de MATCOM")
 st.write("Aquí irá un texto de introducción")
 
-st.divider()
 
 # Opciones de la barra lateral
-secciones = ["Radiografía de la Facultad: Un Análisis del Cuerpo Docente", "Entre Cátedras y Despachos: Mapeando la Estructura de la Facultad", "Más que Docentes: Profundizando en el Perfil Investigador del Profesorado", "Desentrañando la Matriz: Un Análisis Comparativo del Profesorado"]
+secciones = ["La Facultad en Perspectiva: Un Retrato Completo", "Radiografía de la Facultad: Un Análisis del Cuerpo Docente", "Entre Cátedras y Despachos: Mapeando la Estructura de la Facultad", "Más que Docentes: Profundizando en el Perfil Investigador del Profesorado", "Desentrañando la Matriz: Un Análisis Comparativo del Profesorado"]
 seccion_seleccionada = st.sidebar.radio("Índice", secciones)
 
 # Contenido basado en la sección seleccionada
-if seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuerpo Docente":
+if seccion_seleccionada == "La Facultad en Perspectiva: Un Retrato Completo":
+    st.header("MATCOM")
+    st.write("La facultad de matematica y computación fue creada en este año por tal cosa y ya seguiré escribiendo. Está uvicada en las escalinatas de la habana para referencia esta imagen")
+    st.image('./Imagenes/uh.jpg')
+    st.write("nuestra facultad es el edificio poei ... ")
+    # galeria de fotos
+    imagen1,imagen2,imagen3,imagen4 = st.columns(4)
+
+    with imagen1:
+        st.write("Left column.")
+        st.image('./Imagenes/matcom1.jpg')
+    with imagen2:
+        st.write("Right column.")
+        st.image('./Imagenes/matcom2.jpg')
+    with imagen3:
+        st.write("Matcom 3")
+        st.image('./Imagenes/matcom4.jpg')
+    with imagen4:
+        st.write("Matcom 4")
+        st.image('./Imagenes/matcom5.jpg')
+    
+
+    st.write("la uvicacion exacta")
+    m = folium.Map(location=[23.134302777778,-82.382033333333], zoom_start = 16)
+    folium.Marker(
+        [23.134302777778,-82.382033333333],
+        popup ="Facultad de Matemática y Computación",
+        tootlip ="Facultad de Matemática y Computació",
+        icon=folium.Icon(icon="info-sign")
+    ) .add_to(m)
+    st_data = st_folium(m,width =725)
+
+
+elif seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuerpo Docente":
     st.header("Un Análisis del Cuerpo Docente")
     st.write("Este parrafo explicara muy superficialmente lo que se analizará: se hablara de la distribución de los profesores, los cargos y su preparación como forma de introduccion a este tema...acordandonos de que es con la idea de una historia")
     
@@ -517,6 +553,15 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
     elif opcion_seleccionada == "3. Categoría Científica y Participación en Investigación":
         st.markdown("### ¿Los profesores con categorías científicas más altas participan más en grupos de investigación?")
         st.write("Compara la participación en investigación entre diferentes categorías científicas.")
+
+        # Filtrar los miembros del consejo científico
+        miembros_consejo = data[data['Miembros del consejo cientifico'] == 1]
+
+        # Extraer nombres y apellidos
+        nombres_apellidos = miembros_consejo[['Nombre y Apellido']]  # Asegúrate de que estas columnas existan
+        st.write("### Miembros del Consejo Científico")
+        st.write(nombres_apellidos)
+
     
     elif opcion_seleccionada == "4. Edad y Participación en Investigación":
         st.markdown("### ¿Hay diferencias en la participación en grupos de investigación según la edad de los profesores?")
