@@ -109,7 +109,7 @@ if seccion_seleccionada == "La Facultad en Perspectiva: Un Retrato Completo":
 
 elif seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuerpo Docente":
     st.header("Un Análisis del Cuerpo Docente")
-    st.write("Este parrafo explicara muy superficialmente lo que se analizará: se hablara de la distribución de los profesores, los cargos y su preparación como forma de introduccion a este tema...acordandonos de que es con la idea de una historia")
+    st.write("En el corazón de cada escuela late un ritmo singular, marcado por la energía y la pasión de sus profesores.  Cada uno, un maestro con su propio legado, su experiencia y su visión, conforman un mosaico complejo y fascinante.  En esta sección, nos adentraremos en el análisis de la facultad, explorando la distribución de los profesores, los cargos que desempeñan y su preparación, para comprender cómo este tejido humano da forma al alma de la institución")
     
     st.divider()
 
@@ -152,7 +152,7 @@ elif seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuer
     
 elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructura de la Facultad":
     st.header("Mapeando la Estructura de la Facultad")
-    st.write("aquí va una introducción siguiendo con la historia de la estructura de la facultad y se menciona que se analizaran los departamentos")
+    st.write("En la escuela, como en cualquier reino, hay un orden. Los maestros, nuestros héroes, no están distribuidos al azar. Cada uno tiene su lugar, su cargo, su responsabilidad. Algunos, con experiencia acumulada, guían con sabiduría; otros, con energía juvenil, encienden la pasión por aprender. Cada uno, una pieza clave en el engranaje de la educación,  formado para forjar las mentes del futuro.  Y en este viaje, vamos a explorar cómo se entrelazan estas piezas para construir un sistema educativo vibrante y dinámico.  ")
     st.image('./Imagenes/composicion.jpg')
 
     st.markdown("## Distribución general de los profesores por departamento")
@@ -205,7 +205,7 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
     
     if subtema_seleccionado == "Departamento de Matemática":
         st.header("Análisis del departamento de Matemática")
-        st.write("breve explicación del departamento de matemática")
+        st.write("El Departamento de Matemática se dedica a la docencia y la investigación en temas de Matemática Fundamental y Aplicada. Los principales temas de investigación están relacionados a áreas como: Álgebra, Ecuaciones Diferenciales y Aplicaciones, Mecánica de Sólidos, Métodos de Aproximación de Funciones, Escalamiento Multidimensional, Historia y Metodología de la Matemática, y Enseñanza de la Matemática. El departamento está encargado de impartir la docencia de 6 disciplinas de la carrera de Licenciatura en Matemática; estas son Análisis Matemático, Álgebra, Geometría y Topología, Ecuaciones Diferenciales, Medida e Integración y Análisis Funcional, e Historia y Metodología de la Matemática. De igual manera se imparten dos asignaturas de la disciplina Práctica Profesional del Matemático. Además, el departamento atiende la docencia de la disciplina Matemática Básica de la carrera Licenciatura en Ciencia de la Computación, también de nuestra facultad, y presta el servicio de docencia en la disciplina de Matemática Básica de otras diez carreras de la UH. Son impartidas por profesores de nuestro departamento un total de 34 asignaturas en 12 carreras.")
         st.divider()
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
@@ -297,7 +297,7 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         
     elif subtema_seleccionado == "Departamento de Matemática Aplicada":
         st.header("Análisis del departamento de matemática aplicada")
-        st.write("breve explicación del departamento")
+        st.write("El Departamento de Matemática Aplicada cuenta con un claustro de 19 profesores, de ellos 12 con categoría docente superior (10 PT, 2 PA) y 12 doctores en Ciencias Matemáticas y Maestros en Ciencias, que desarrollan actividades docentes y de investigación científica. Se imparte docencia de Pregrado y Posgrado en temas de, Estadística y Probabilidades, Matemática Numérica, Optimización; organizada con nombres análogos en tres menciones para la Maestría en Ciencias Matemáticas, en tres disciplinas para la carrera de Licenciatura en Matemática y en la disciplina Matemática Aplicada para la carrera Ciencia de la Computación. También se imparten cursos de Estadística para las carreras de Geografía y Sociología y se coordina la disciplina Práctica Profesional para la carrera de Licenciatura en Matemática. En el Departamento existen cuatro Grupos de Investigación (GI) con más de 30 años de experiencia: GI de Probabilidades y Estadística, GI de Optimización, GI de Análisis Numérico y de Imágenes y el GI de Modelación Biomatemática; a los cuales se vinculan anualmente un número considerable de estudiantes de Pregrado y Posgrado. Líneas de investigación con resultados relevantes son el Análisis de datos en aplicaciones Médicas y Climáticas, la Optimización de procesos logísticos, el desarrollo de modelos en la Biomatemática, el Procesamiento de Imágenes, la Modelación y desarrollo de algoritmos numéricos para problemas en múltiples escalas, algoritmos de aproximación con funciones wavelets. El claustro participa en tres proyectos de investigación del Programa Nacional de Ciencias Básicas y a varios proyectos internacionales y territoriales.")
         st.divider()
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
@@ -391,7 +391,7 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
     elif subtema_seleccionado == "Departamento de Computación 1":
         st.header("Análisis del departamento de computación1")
-        st.write("breve explicación del departamento ")
+        st.write("El Departamento de Programación agrupa las disciplinas de Programación e Ingeniería de Software, Sistemas de Bases de Datos y Práctica Profesional. Estas disciplinas están constituidas por asignaturas fundamentales en el perfil de un graduado de Ciencia de la Computación y sirven de base para otras disciplinas de esta especialidad. Tal es el caso de la asignatura de Programación que introduce conceptos y técnicas de algoritmos y programación orientada a objetos, que luego se desarrollan por otras asignaturas.  Por su parte la asignatura Ingeniería de Software introduce a los estudiantes en las técnicas de la planificación, organización y ejecución del proceso de desarrollo de software. ")
         st.divider()
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
@@ -485,7 +485,7 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         
     elif subtema_seleccionado == "Departamento de Computación 2":
         st.header("Análisis del departamento de computación 2")
-        st.write("breve explicación del departamento")
+        st.write("El Departamento de Computación II se encarga de las Disciplinas de Sistemas Computacionales e Inteligencia Artificial. El grupo de investigación de Inteligencia Artificial es uno de los grupos más jóvenes de la facultad y que ha tenido resultados relevantes en los últimos años. Al mismo pueden vincularse estudiantes desde el primer año de sus carreras que tengan interés en las ramas como: Aprendizaje de Máquina, Ciencia de Datos, Robótica, Procesamiento de Lenguajes, entre otras. Se encarga adicionalmente de los eventos de programación competitiva, para los cuáles se preparan un conjunto de estudiantes liderados por el profesor Alfredo Somoza que han alcanzado los mejores resultados del país en los últimos años. ")
         st.divider()
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
