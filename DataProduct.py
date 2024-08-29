@@ -6,6 +6,7 @@ from collections import Counter
 import matplotlib.pyplot as plt
 from streamlit_folium import st_folium
 import folium 
+from streamlit_agraph import agraph, Node, Edge, Config
 
 with open('antiguedad-matematica.csv', 'r') as f:
     file=pd.read_csv(f)
@@ -15,7 +16,7 @@ ranges = [(20, 30), (30, 40), (40, 50), (50, 60), (60, 70), (70, 80)]
 # Sección inicial
 st.header("Análisis del claustro de profesores de MATCOM")
 st.write("Aquí irá un texto de introducción")
-
+st.divider()
 
 # Opciones de la barra lateral
 secciones = ["La Facultad en Perspectiva: Un Retrato Completo", "Radiografía de la Facultad: Un Análisis del Cuerpo Docente", "Entre Cátedras y Despachos: Mapeando la Estructura de la Facultad", "Más que Docentes: Profundizando en el Perfil Investigador del Profesorado", "Desentrañando la Matriz: Un Análisis Comparativo del Profesorado"]
@@ -28,7 +29,8 @@ if seccion_seleccionada == "La Facultad en Perspectiva: Un Retrato Completo":
     st.image('./Imagenes/uh.jpg')
     st.write("nuestra facultad es el edificio poei ... ")
     # galeria de fotos
-    imagen1,imagen2,imagen3,imagen4 = st.columns(4)
+    imagen1,imagen2 = st.columns(2)
+    imagen3,imagen4 = st.columns(2)
 
     with imagen1:
         st.write("Left column.")
@@ -103,7 +105,50 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
     st.write("aquí va una introducción siguiendo con la historia de la estructura de la facultad y se menciona que se analizaran los departamentos")
     st.image('./Imagenes/composicion.jpg')
 
+    st.markdown("## Distribución general de los profesores por departamento")
+    # Leer los datos desde el archivo CSV
+    df = pd.read_csv('nodos.csv')
+
+    # Crear listas para nodos y aristas
+    nodes = []
+    edges = []
+
+    # Agregar el nodo central (Decano)
+    nodes.append(Node(id="Decano", label="Decano", size=30))
+
+    # Crear un diccionario para almacenar los departamentos
+    departments = {}
+
+    # Agregar nodos de departamentos y miembros
+    for index, row in df.iterrows():
+        department = row['Departamento']
+        member_id = f"{row['Nombre']}-{row['Apellidos']}"
+    
+        # Si el departamento no existe, crearlo y conectarlo al Decano
+        if department not in departments:
+            department_id = f"Dept_{department}"
+            departments[department] = department_id
+            nodes.append(Node(id=department_id, label=department, size=25))
+            edges.append(Edge(source="Decano", target=department_id))
+    
+        # Agregar el nodo del miembro y conectarlo al departamento
+        nodes.append(Node(id=member_id, label=f"{row['Nombre']} {row['Apellidos']}", size=20))
+        edges.append(Edge(source=departments[department], target=member_id))
+
+    # Configuración del gráfico
+    config = Config(width=950,
+                    height=950,
+                    directed=True, 
+                    physics=True, 
+                    hierarchical=False)
+
+    # Generar el gráfico
+    return_value = agraph(nodes=nodes, 
+                          edges=edges, 
+                          config=config)
+
     st.divider()
+
     # Subtemas para la sección de Datos
     subtemas_datos = ["Departamento de Matemática", "Departamento de Matemática Aplicada", "Departamento de Computación 1", "Departamento de Computación 2"]
     subtema_seleccionado = st.sidebar.radio("Subtemas de Datos", subtemas_datos)
