@@ -15,7 +15,30 @@ ranges = [(20, 30), (30, 40), (40, 50), (50, 60), (60, 70), (70, 80)]
 
 # Sección inicial
 st.header("Análisis del claustro de profesores de MATCOM")
-st.write("Aquí irá un texto de introducción")
+# Agregar una imagen
+st.image("./Imagenes/matcom6.jpg", caption="Facultad de Matemática y computación", use_column_width=True)
+
+# Introducción
+st.markdown("""
+<div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
+    <h3 style='color: black;'>¿Qué veremos?</h3>
+    <p style='color: black;'>
+        La Facultad de Matemáticas y Computación ha demostrado ser un lugar donde convergen el talento y 
+        la pasión por el conocimiento. Aquí, cada año cosechamos grandes éxitos en competiciones como el ICPC,
+        y contamos con graduados que destacan en el mundo profesional, evidenciando el alto potencial de 
+        nuestros estudiantes. Pero detrás de estos logros impresionantes, hay un equipo de personal altamente 
+        cualificado que impulsa cada paso hacia el éxito.
+        En este trabajo, nos proponemos analizar a fondo a los miembros 
+        del claustro de profesores, desde una visión general hasta los 
+        detalles más particulares de sus trayectorias. Vamos a explorar sus perfiles, 
+        que incluyen su experiencia, títulos académicos y roles dentro de la facultad, 
+        resaltando cómo esta diversidad contribuye al desarrollo de nuestra comunidad. 
+        Con cada análisis, descubriremos las conexiones que hacen posible esos grandes resultados, 
+        y así, entenderemos mejor cómo el esfuerzo conjunto crea un entorno propicio para el aprendizaje y 
+        la innovación.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 st.divider()
 
 # Opciones de la barra lateral
@@ -25,28 +48,55 @@ seccion_seleccionada = st.sidebar.radio("Índice", secciones)
 # Contenido basado en la sección seleccionada
 if seccion_seleccionada == "La Facultad en Perspectiva: Un Retrato Completo":
     st.header("MATCOM")
-    st.write("La facultad de matematica y computación fue creada en este año por tal cosa y ya seguiré escribiendo. Está uvicada en las escalinatas de la habana para referencia esta imagen")
-    st.image('./Imagenes/uh.jpg')
-    st.write("nuestra facultad es el edificio poei ... ")
     # galeria de fotos
     imagen1,imagen2 = st.columns(2)
     imagen3,imagen4 = st.columns(2)
 
     with imagen1:
-        st.write("Left column.")
         st.image('./Imagenes/matcom1.jpg')
-    with imagen2:
-        st.write("Right column.")
-        st.image('./Imagenes/matcom2.jpg')
-    with imagen3:
-        st.write("Matcom 3")
-        st.image('./Imagenes/matcom4.jpg')
-    with imagen4:
-        st.write("Matcom 4")
-        st.image('./Imagenes/matcom5.jpg')
+        st.markdown("""
+        <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
+            <p style='color: black;'>
+                El edificio Felipe Poey donde se encuentra la facultad sirvió en el pasado como facultad de Ciencias Exactas y Naturales.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
     
+    with imagen2:
+        st.image('./Imagenes/matcom2.jpg')
+        st.markdown("""
+        <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
+            <p style='color: black;'>
+                En este centro también funcionó por algunos años la Carrera de Geografía.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        
+    with imagen3:
+        st.image('./Imagenes/matcom4.jpg')
+        st.markdown("""
+        <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
+            <p style='color: black;'>
+                En nuestro programa de pregrado impartimos las carreras de Licenciatura en Matemática, Licenciatura en Ciencia de la Computación y Licenciatura en Ciencia de Datos.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    with imagen4:
+        st.image('./Imagenes/matcom5.jpg')
+        st.markdown("""
+        <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
+            <p style='color: black;'>
+                La facultad acoge a dos museos con temáticas muy diferentes a los perfiles profesionales que se imparten en el centro. Constituyen muestras de su pasado como Facultad de Ciencias Naturales.
+        </div>
+        """, unsafe_allow_html=True)
+        
+        
+    st.divider()
 
-    st.write("la uvicacion exacta")
+    st.write("La Facultad de Matemática y Computación se encuentra ubicada en el Edificio Felipe Poey y Aloy en la Colina Universitaria. En 1939 culminan las obras de construcción del nuevo edificio que albergaría a la Escuela de Ciencias que comprendía las secciones de Ciencias Físico-Matemáticas, Ciencias Físico-Químicas y Ciencias Naturales. Bello edificio patrimonial que alberga dos carreras, así como dos museos, un observatorio astronómico y otras instancias universitarias como son el Archivo Central y el CEPES. Además de contar con un sitial histórico donde se encuentran los restos de Felipe Poey y Aloy. En la actualidad en el centro se estudian dos carreras de excelencia : Matemática y Ciencia de la Computación.")
+    st.image('./Imagenes/uh.jpg', caption="Colina Universitaria", use_column_width=True)
     m = folium.Map(location=[23.134302777778,-82.382033333333], zoom_start = 16)
     folium.Marker(
         [23.134302777778,-82.382033333333],
