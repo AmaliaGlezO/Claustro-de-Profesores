@@ -43,7 +43,7 @@ st.divider()
 
 # Opciones de la barra lateral
 secciones = ["La Facultad en Perspectiva: Un Retrato Completo", "Radiografía de la Facultad: Un Análisis del Cuerpo Docente", "Entre Cátedras y Despachos: Mapeando la Estructura de la Facultad", "Más que Docentes: Profundizando en el Perfil Investigador del Profesorado", "Desentrañando la Matriz: Un Análisis Comparativo del Profesorado"]
-seccion_seleccionada = st.sidebar.radio("Índice", secciones)
+seccion_seleccionada = st.sidebar.radio("Ïndice", secciones)
 
 # Contenido basado en la sección seleccionada
 if seccion_seleccionada == "La Facultad en Perspectiva: Un Retrato Completo":
@@ -114,8 +114,8 @@ elif seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuer
     st.divider()
 
     # Subtemas para la sección de Radiografía de la Facultad
-    subtemas_datos = ["Distribución de Profesores", "Análisis de Cargos", "Proporción Docentes/No Docentes"]
-    subtema_seleccionado = st.sidebar.radio("Subtemas de Datos", subtemas_datos)
+    subtemas_datos = ["Distribución de Profesores", "Análisis de Cargos", "Proporción Docentes/No Docentes","Categoría científica"]
+    subtema_seleccionado = st.sidebar.radio("Análisis del cuerpo docente", subtemas_datos)
     
     if subtema_seleccionado == "Distribución de Profesores":
         st.header("¿Cuál es la distribución de profesores por departamento?")
@@ -150,6 +150,10 @@ elif seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuer
 
         st.plotly_chart(fig2)
     
+    elif subtema_seleccionado == "Categoría científica":
+        st.header("¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
+        st.write("un análisis de este tema")
+
 elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructura de la Facultad":
     st.header("Mapeando la Estructura de la Facultad")
     st.write("En la escuela, como en cualquier reino, hay un orden. Los maestros, nuestros héroes, no están distribuidos al azar. Cada uno tiene su lugar, su cargo, su responsabilidad. Algunos, con experiencia acumulada, guían con sabiduría; otros, con energía juvenil, encienden la pasión por aprender. Cada uno, una pieza clave en el engranaje de la educación,  formado para forjar las mentes del futuro.  Y en este viaje, vamos a explorar cómo se entrelazan estas piezas para construir un sistema educativo vibrante y dinámico.  ")
@@ -579,10 +583,68 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
     
 elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Investigador del Profesorado":
     st.header("Profundizando en el Perfil Investigador del Profesorado")
-    st.write("An parrafo mas profundo sobre las actividades extraescoleres de los profesores y una breve introducción a los análisis de esta zona.")
+    st.write("La labor de los profesores en la facultad va más allá de la enseñanza convencional; se extiende hacia un compromiso profundo con la investigación y el desarrollo académico. En este análisis, nos centraremos en las actividades extraescolares de los docentes, su participación en proyectos de investigación y cómo sus contribuciones enriquecen tanto el entorno académico como la preparación de los estudiantes en programas de maestría. Al explorar el perfil investigador del profesorado, desvelaremos las dinámicas que sustentan la excelencia académica y el impacto significativo que tienen en la formación de futuros profesionales.")
     st.divider()
-    st.markdown("### 1. ¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
-    st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+
+    # Cargar los datos desde el CSV
+    df = pd.read_csv('maestría e investigación.csv')
+
+    # Crear listas para nodos y aristas
+    nodes = []
+    edges = []
+
+    # Agregar el nodo central
+    nodes.append(Node(id="Extras_Profesores", label="Extras de los profesores", size=30))
+
+    # Crear nodos para cada actividad
+    maestria_node = Node(id="Maestria", label="Imparten Maestría", size=25)
+    grupos_investigacion_node = Node(id="Grupos_Investigacion", label="Grupos de Investigación", size=25)
+    consejo_cientifico_node = Node(id="Consejo_Cientifico", label="Consejo Científico", size=25)
+
+    # Agregar nodos de actividades a la lista de nodos
+    nodes.append(maestria_node)
+    nodes.append(grupos_investigacion_node)
+    nodes.append(consejo_cientifico_node)
+
+    # Conectar el nodo central a los nodos de actividades
+    edges.append(Edge(source="Extras_Profesores", target="Maestria"))
+    edges.append(Edge(source="Extras_Profesores", target="Grupos_Investigacion"))
+    edges.append(Edge(source="Extras_Profesores", target="Consejo_Cientifico"))
+
+    # Agregar nodos de profesores y conexiones a los nodos de actividades
+    for index, row in df.iterrows():
+        profesor_id = f"{row['Nombre']} {row['Apellidos']}"
+        nodes.append(Node(id=profesor_id, label=profesor_id, size=20))
+    
+        # Conectar a los nodos de actividades
+        if row['Imparte Maestria'] == 1:
+            edges.append(Edge(source=maestria_node.id, target=profesor_id))
+    
+        if row['Participa en grupos de investigación'] == 1:
+            edges.append(Edge(source=grupos_investigacion_node.id, target=profesor_id))
+    
+        if row['Miembro del consejo científico'] == 1:
+            edges.append(Edge(source=consejo_cientifico_node.id, target=profesor_id))
+
+    # Configuración del gráfico
+    config = Config(width=950,
+                    height=950,
+                    directed=True, 
+                    physics=True, 
+                    hierarchical=False)
+
+    # Generar el gráfico
+    return_value = agraph(nodes=nodes, 
+                          edges=edges, 
+                          config=config)
+
+    st.divider()
+    st.header("Extras de los profesores en la facultad")
+    
+    st.divider()
+    st.header("Grupos de investigación")
+    col1,col2,col3,col4 = st.columns(4)
+    
     st.markdown("### 2.¿Cuántos profesores son responsables de la enseñanza de maestría?")
     st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
     st.markdown("### 3.¿Qué porcentaje de profesores participa en grupos de investigación?")
