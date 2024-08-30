@@ -639,12 +639,133 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
                           config=config)
 
     st.divider()
-    st.header("Extras de los profesores en la facultad")
+    st.header("Grupos de investigación")
+    st.write("Analisis e introducción de los grupos de investigación")
+    # Contar la cantidad de profesores por grupo de investigación
+    group_counts = df['Grupo de investigación'].value_counts()
+
+    # Crear el gráfico de barras con Plotly
+    fig = go.Figure(data=[go.Bar(
+        x=group_counts.index,
+        y=group_counts.values,
+        marker_color=px.colors.sequential.Blues
+    )])
+
+    # Personalizar el gráfico
+    fig.update_layout(
+        title='Cantidad de Profesores por Grupo de Investigación',
+        xaxis_title='Grupos de Investigación',
+        yaxis_title='Cantidad de Profesores',
+        bargap=0.1
+    )
+
+    # Mostrar el gráfico en Streamlit
+    st.plotly_chart(fig, use_container_width=True)
     
     st.divider()
-    st.header("Grupos de investigación")
-    col1,col2,col3,col4 = st.columns(4)
+    subtemas_datos = ["Grupo de Algebra", "Grupo de Vizualizacion y gráficos por computadora", "Grupo de Sistemas de Información e Inteligencia de Negocios", "Grupo de Probabilidades y Estadística"]
+    subtema_seleccionado = st.radio("Subtemas de Datos", subtemas_datos)
     
+    if subtema_seleccionado == "Grupo de Algebra":
+        st.header("Grupo de Algebra")
+        st.write("El grupo de investigación en álgebra se enfoca en la exploración profunda de la teoría de representaciones, un área fundamental que estudia las propiedades de la categoría de módulos. Esta rama del álgebra se centra en cómo los objetos algebraicos, como álgebras y grupos, pueden ser representados mediante matrices y transformaciones lineales. A través de seminarios, talleres y colaboraciones interdisciplinarias, nuestro grupo busca fomentar un ambiente dinámico donde se puedan compartir ideas y avances en la investigación. Estamos comprometidos con la formación de nuevos investigadores en el campo del álgebra y la promoción del conocimiento matemático en general.")
+        st.markdown("""
+        <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
+            <h3 style='color: black;'>Logros y Publicaciones del grupo</h3>
+            <p style='color: black;'>
+                    . 5 Trabajos de Diploma  <br>
+                    . 4 Tesis de Maestría  <br>
+                    . 5 ponencias en Compumat 2015, 3 ponencias en Compumat 2017, 1 ponencia en Compumat 2019 
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    elif subtema_seleccionado == "Grupo de Vizualizacion y gráficos por computadora":
+        st.header("Grupo de Vizualizacion y gráficos por computadora")
+        st.write("El grupo de investigación en Visualización y Gráficos por Computadora se dedica a la exploración y desarrollo de técnicas avanzadas para el renderizado en tiempo real, con un enfoque particular en fenómenos complejos como la iluminación global, el renderizado de volúmenes y los medios participativos. Una de nuestras principales áreas de investigación es el renderizado en tiempo real, que permite generar imágenes de alta calidad de manera instantánea. Esto es crucial en aplicaciones como videojuegos, simulaciones interactivas y realidad virtual. Nuestros profesores trabajan en optimizar algoritmos y técnicas que permiten lograr una representación visual impresionante sin sacrificar el rendimiento, lo que es fundamental para ofrecer experiencias inmersivas.")
+        st.markdown("""
+        <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
+            <h3 style='color: black;'>Logros y Publicaciones del grupo</h3>
+            <p style='color: black;'>
+                    . E-Buffer: Una Representación en Espacio de Vista para Aplicaciones de Iluminación Global en Tiempo Real. Alejandro Piad, Ludwig Leonard. 2014. Ciencias Matemáticas <br> 
+                    . A-PIT: Estructura de Subdivisión Espacial Aceleración de Raytracing en GPU. Jean L’Clerc, Alejandro Piad, Ludwig Leonard. 2016. Ciencias Informáticas.  <br>
+                    . GSL – Un Lenguaje de Dominio Específico para la definición de Gráficos. Ernesto Izquierdo, Ludwig Leonard. 2013. CIbSE. Uruguay.  
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+
+    elif subtema_seleccionado == "Grupo de Sistemas de Información e Inteligencia de Negocios":
+        st.header("Grupo de Sistemas de Información e Inteligencia de Negocios")
+        st.write("La esencia del grupo de Sistemas de Información e Inteligencia de Negocios (ISBIG – Information Systems and Business Intelligence) es la labor de investigación e innovación en diversas áreas del conocimiento científico y la aplicación práctica, que se caracterizan por su interrelación estrecha con el almacenamiento, el análisis y la obtención de información desde el procesamiento de los datos primarios hasta la generación de conocimiento con vista a la toma de decisiones pertinentes, certeras y oportunas. Se trabaja en la profundización teórico-conceptual y metodológica en relación con el espectro de los enfoques contemporáneos de las bases de datos, que favorecen la actualización incesante de la disciplina Sistemas de Información, impulsan el trabajo científico-estudiantil y asegura el reto en las actividades de posgrado. Dada la diversidad de escenarios y el creciente desvanecimiento de los límites entre las más disímiles ramas de la ciencia y la tecnología, se enfatiza en la interrelación de paradigmas como contribución al manejo de datos heterogéneos e información espacial, el fomento de la calidad de los datos y el control de los proyectos con vistas a propiciar el éxito de la gestión del conocimiento organizacional. Para el desarrollo de soluciones computacionales a problemas complejos se incursiona en la integración de resultados desde la perspectiva de los datos en ramas afines como Sistemas de Bases de Datos, Inteligencia y Analítica de Negocios, Recuperación de Información, Optimización de Consultas, Minería de Datos, Big Data, Detección de Anomalías, Aprendizaje Automático, Procesamiento del Lenguaje Natural.")
+        st.markdown("""
+        <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
+            <h3 style='color: black;'>Logros y Publicaciones del grupo</h3>
+            <p style='color: black;'>
+                    . Fernández Montoto, C; Inguanzo Rey, H. J. Utilización de los mundos virtuales en el proceso de enseñanza aprendizaje. Congreso Internacional UNIVERSIDAD 2020. La Habana, Cuba. Febrero de 2020. <br>
+                    . Montes de Oca Richardson, M. Estrategias para la capacitación del personal involucrado en proyectos de desarrollo municipal. Evento Provincial de UNIVERSIDAD 2020. La Habana, Cuba. julio de 2020. <br>
+                    . Quintana-Wong, C.; García Hernández, L. Recommender System in a Transactional Analytical Solution for Health Care and Health Promotion. Revista Cubana de Transformación Digital. Vol. 1 Núm. 1 (2020) https://rctd.uic.cu/rctd/artcle/view/58 <br>
+                    . Quintana-Wong, C. A Deep Learning Model for Semantic Relation Classification in Spanish based on Distant Supervision (International Conference on Operations Research ICOR 2020) <br>
+                    . Prado-Romero, M.A., Fernández Oliva, A., García Hernández, L., Cardentey-Fundora, V.M. Predicting Topic Popularity using Neural Networks and a Time Sensitive Topic Model. (International Conference on Operations Research ICOR 2020) <br>
+                    . Prado-Romero, M.A., Celi, A., Stilo, G., Coto-Santiesteban, A. TSTM a Time Sensitive Topics´ Model for Popularity Prediction on News Providers, Ibero-American Congress on Pattern Recognition (CIARP) 2019, Springer, Cham, 2019. https://doi.org/10.1007/978-3-030-33904-3_9 <br>
+                    . Prado-Romero, M.A., Fernández Oliva, A., García Hernández, L. Discovering Influencers on Social Networks (International Workshop on Operations Research IWOR 2019) <br>
+                    . Quintana-Wong, C. Integrating Latent Factor and Neighborhood Models to obtain Accurate Recommendations (International Workshop on Operations Research IWOR 2019) <br> 
+                    . Quintana-Wong, C. Combining Collaborative Filtering and Topic Modeling for Information Recommendation. (Escuela Latinoamericana de Verano de Investigación de Operaciones ELAVIO 2019 – Lleida, España) <br>
+                    . Quintana-Wong, C. Recommendations for Healthcare using document-oriented NoSQL. (COMPUMAT 2019). ISBN: 978-959-16-4341-4 <br>
+                    . Fernández Montoto, C. La enseñanza de las Matemáticas mediante mundos virtuales. Compumat 2019. ISBN: 978-959-16-4341-4 <br>
+                    . Montes de Oca Richardson, M. Estrategias para el control de proyectos de desarrollo municipal sustentadas en la gestión del conocimiento. Memorias del III Congreso Internacional de Marketing desarrollo local y turismo 2019. La Habana, Cuba. 2019 <br>
+                    . Montes de Oca Richardson, M. La DIP aplicada a los programas de la vivienda en el marco del desarrollo local. III Congreso Internacional de Marketing desarrollo local y turismo 2019. La Habana, Cuba. 2019 <br>
+                    . Montes de Oca Richardson, M. El desarrollo local en el Consejo de la Administración en la Dirección Integrada por proyecto. III Congreso Internacional de Marketing desarrollo local y turismo 2019. La Habana, Cuba. 2019 <br>
+                    . Montes de Oca Richardson, M. SCCPM Sistema Computacional para el control de los proyectos de desarrollo municipal. Evento Provincial de Economía de la ANEC. La Habana, Cuba. <br>
+                    . Montes de Oca Richardson, M. Estrategias para el desarrollo municipal enmarcadas en la transformación digital. Evento Provincial de Economía de la ANEC. La Habana, Cuba. <br>
+                    . Prado-Romero, M. A.; Fernández Oliva, A.; García Hernández, L. Identifying Twitter Users Influence and Open Mindedness Using Anomaly Detection. International Workshop on Artificial Intelligence and Pattern Recognition. Springer, Cham, 2018. https://doi.org/10.1007/978-3-030-01132-1_19 <br>
+                    . García Hernández, L.; Quintana Wong, C. (ponente); Guillot Jiménez, J.; Fleitas Aparicio, C. (2017) Solución computacional transaccional y analítica para la promoción de la salud. Proyecto del Grupo Multicéntrico de Investigaciones en Salud GMIS-Sanología de la Unión de Universidades de América Latina (UDUAL). COMPUMAT 2017. Ciudad Universitaria “José Antonio Echevarría”, Cuba. Noviembre 2017. ISBN: 978-959-261-562-5. <br>
+                    . Avellaneda González, R.; García Hernández, L. (ponente); Guillot Jiménez, J. (2017). Solución BI NoSQL para el análisis del ingreso a la Educación Superior. COMPUMAT 2017. Ciudad Universitaria “José Antonio Echevarría”, Cuba. Noviembre 2017. <br>
+                    . López López, A.; García Hernández, L.; et al (2017). Proyecto de gestión de conocimiento en Desoft: Conjunto de herramientas para la gestión del conocimiento [1]. Revista Nueva Empresa, Cuba. Abril 2017. ISSN 1682 – 2455. <br>
+                    . Simón A., Torres, M., García L., Simón A., Ravelo R. (2016) Comparing Tabular and Multidimensional Model in a real BI solution. IEEE Latin American Transactions. Vol. 14, No. 7, Julio 2016. IEEE (3393-3399). ISSN: 1548-0992. <br>
+                    . Guillot Jiménez, J.; García Hernández, L. (2016) Bases de datos NoSQL para la gestión de datos geoespaciales. Memorias de la XVI Convención y Feria Internacional Informática 2016: Conectando Sociedades. Marzo 2016. Editorial Joven Club (959-289). ISBN: 978-959-289-122-7. <br>
+                    . Reyes Gaspar, P. L. Estrategia para la promoción del autocuidado de la salud en la Universidad Surcolombiana. Tesis Doctoral en Ciencias de la Salud. (Ph. D.) Tutoras: Amable Ambrós, Z. (ENSP) y García Hernández, L. (UH) Proyecto del Grupo Multicéntrico de Investigaciones en Salud GMIS-Sanología de la Unión de Universidades de América Latina (UDUAL). Escuela Nacional de Salud Pública. La Habana, Cuba, Marzo de 2016. <br>
+                    . Simón Cuevas, A.; Torres Sánchez, M.; García Hernández, L.; Ravelo Suárez, R. (2015) Evolución de la gestión del conocimiento en el Grupo Empresarial CIMEX. Revista Digital Gestión del Conocimiento y Tecnologías. España, Diciembre de 2015. ISSN: 2255-5648. <br>
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+
+    elif subtema_seleccionado == "Grupo de Probabilidades y Estadística":
+        st.header("Grupo de Probabilidades y Estadística")
+        st.write("El grupo de investigación en Probabilidades, Estadística y Optimización se dedica a ejecutar proyectos que integran las tendencias actuales y aportan significativamente al área de estudio. Nuestro enfoque se centra en desarrollar nuevos algoritmos, métodos y modelos teóricos que mejoren los procesos existentes, especialmente en el contexto del análisis de información cuantitativa en medicina y otros campos. Una de nuestras principales metas es ejecutar proyectos de investigación vinculados al desarrollo de nuevos algoritmos y métodos. Esto incluye la creación de modelos teóricos en probabilidades y estadística que optimicen el procesamiento, distribución, análisis e interpretación de datos cuantitativos. Nuestro trabajo busca mejorar la eficacia de los softwares existentes, facilitando así la toma de decisiones informadas en diversas áreas, especialmente en la medicina. Nos enfocamos también en el perfeccionamiento y desarrollo de nuevas técnicas analíticas. Estas técnicas están diseñadas para fortalecer la capacidad del país en la realización de mediciones precisas y evaluaciones exhaustivas en un amplio espectro de aplicaciones. Esto incluye estudios sobre factores medioambientales y la gestión de sistemas urbanos, con especial atención a los problemas de transporte, donde la estadística y la optimización juegan un papel crucial. A través de estos esfuerzos, el grupo de investigación en Probabilidades, Estadística y Optimización busca no solo avanzar en el conocimiento científico, sino también contribuir al desarrollo social y económico del país mediante la aplicación efectiva de estos principios en múltiples áreas.")
+        st.markdown("""
+        <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
+            <h3 style='color: black;'>Logros y Publicaciones del grupo</h3>
+            <p style='color: black;'>
+                    2011-2013 <br>
+                    . Modelos Matemáticos para el Estudio de Medio Ambiente, Salud y Desarrollo Humano. <br>
+                    2014-2016 <br>
+                    . Modelos, métodos y algoritmos para la toma de decisiones. <br>
+                    Aplicaciones en la salud humana y el medio ambiente
+                    2015-2016 <br>
+                    . Proyecto adjunto al Convenio de Colaboración Académico-Cientifica entre la Universidade Federal de Minas Gerais y la Universidad de La Habana <br>
+                    2018-2020 <br>
+                    . A Cuban-Flemish Training and Research Program in Data Science and Big Data Analysis. Cuba-Bélgica <br>
+                    2020-2021 <br>
+                    . Proyecto LASSO de Modelación Matemática para la lucha contra el COVID <br>
+                    . Métodos cuantitativos para estudios problemas médicos, medio-ambientales y de Bienestar Humano. pNCB, Cuba Participación en Redes <br>
+                    2016-2019 <br>
+                    . Red CYTED 516RT0513 “RED IBEROAMERICANA DE AGROBIGDATA Y «DECISION SUPPORT SYSTEMS» (DSS) PARA UN SECTOR AGROPECUARIO SOSTENIBLE”, Comunidad Europea <br>
+                    2018-2020 <br>
+                    . Red Iberoamericana de Investigación en Modelos de Optimización y Decisión y sus Aplicaciones. Comunidad Europea <br>
+                    2017- <br>
+                    . Red BIOMED (UH) <br>
+                    2014- <br>
+                    . Grupo de Aplicaciones en Salud Humana y Medio Ambiente (GRASHUMEDIA) <br>
+                    2012- <br>
+                    . Red Iberoamericana de Estudios Cuantitativos Aplicados (RIDECA) <br>
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+
+    st.divider()
     st.markdown("### 2.¿Cuántos profesores son responsables de la enseñanza de maestría?")
     st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
     st.markdown("### 3.¿Qué porcentaje de profesores participa en grupos de investigación?")

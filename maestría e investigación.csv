@@ -1,4 +1,4 @@
-Nombre,Apellidos, Grupo de investigación,Imparte Maestria,Participa en grupos de investigación,Miembro del consejo científico
+Nombre,Apellidos,Grupo de investigación,Imparte Maestria,Participa en grupos de investigación,Miembro del consejo científico
 José Fidel,Hernández Advíncula,Algebra,0,1,0
 Beatriz de Rancell,Montero Deus,Algebra,0,1,0
 Alejandro,Piad,Vizualizacion y gráficos por computadora,0,1,0
@@ -18,20 +18,20 @@ Marelys,Crespo,Probabilidades y Estadística,0,1,0
 Yanet,García,Probabilidades y Estadística,0,1,0
 Elianys,Garcia,Probabilidades y Estadística,0,1,0
 Dalia,Díaz,Probabilidades y Estadística,0,1,0
-Alberto,Fernández Oliva,0,1,0,0
-Yudivián,Almeyda Cruz,0,1,0,1
-Alejandro,Mesejo Chiong,0,1,0,1
-Ricardo,Sánchez Casanova,0,1,0,0
-Eduardo,Quesada Orozco,0,1,0,0
-Concepcion,Valdes Castro,0,0,0,1
-Luciano,Garcia Garrido,0,0,0,1
-Miguel,Katrib Mora,0,0,0,1
-Mariano,Rodriguez Ricard,0,0,0,1
-Jorge Maria,Lemagne Perez,0,0,0,1
-Gemayqzel,Bouza Allende,0,0,0,1
-Sira Maria,Allende Alonso,0,0,0,1
-Marta Lourdes,Baguer Diaz,0,0,0,1
-Aymee,De Los Angeles Marrero Severo,0,0,0,1
-Angela Mireya,Leon Mecias,0,0,0,1
-Giani,Eganna Fernandez,0,0,0,1
-Wilfredo,Morales Lezca,0,0,0,1
+Alberto,Fernández Oliva,,1,0,0
+Yudivián,Almeyda Cruz,,1,0,1
+Alejandro,Mesejo Chiong,,1,0,1
+Ricardo,Sánchez Casanova,,1,0,0
+Eduardo,Quesada Orozco,,1,0,0
+Concepcion,Valdes Castro,,0,0,1
+Luciano,Garcia Garrido,,0,0,1
+Miguel,Katrib Mora,,0,0,1
+Mariano,Rodriguez Ricard,,0,0,1
+Jorge Maria,Lemagne Perez,,0,0,1
+Gemayqzel,Bouza Allende,,0,0,1
+Sira Maria,Allende Alonso,,0,0,1
+Marta Lourdes,Baguer Diaz,,0,0,1
+Aymee,De Los Angeles Marrero Severo,,0,0,1
+Angela Mireya,Leon Mecias,,0,0,1
+Giani,Eganna Fernandez,,0,0,1
+Wilfredo,Morales Lezca,,0,0,1
