@@ -7,3 +7,4 @@ matplotlib.pyplot
 streamlit_folium
 folium 
 streamlit_agraph
+matplotlib
