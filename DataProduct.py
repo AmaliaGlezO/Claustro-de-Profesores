@@ -122,12 +122,12 @@ elif seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuer
         st.write("Aquí se analiza la distribución de profesores por departamento.")
         newDf = data.groupby("Departamento")["Nombre y Apellidos"].count().reset_index()
         newDf.columns = ["Departamento", "Cantidad de Personas"]
+        # Definir una escala de azules para los colores
+        color_scale = px.colors.sequential.Blues_r
+        # Un gráfico de pastel para ver la cantidad de personas por departamentos
+        fig = px.pie(newDf, names='Departamento', values='Cantidad de Personas', title='Distribución por Departamento', color_discrete_sequence=color_scale)
+        st.plotly_chart(fig)  
 
-        #Un gráfico de pastel para ver la cantidad de personas por departamentos
-        fig = px.pie(newDf, names='Departamento', values='Cantidad de Personas', title='Distribución por Departamento')
-
-        st.plotly_chart(fig)
-                
     elif subtema_seleccionado == "Análisis de Cargos":
         st.header("¿Cuál es la distribución de cargos en la facultad?")
         st.write("Examina cuántos profesores ocupan cada cargo (decano, profesor auxiliar, etc.).")
@@ -144,9 +144,9 @@ elif seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuer
         st.write("Aquí se compara la cantidad de docentes frente a no docentes.")
         newDf2 = data.groupby("Clasif. Por escala")["Nombre y Apellidos"].count().reset_index()
         newDf2.columns = ["Escala", "Cantidad de Personas"]
-
+        color_scale = px.colors.sequential.Blues_r
         #Un gráfico de pastel para ver la cantidad de dependiendo de sugranos
-        fig2 = px.pie(newDf2, names='Escala', values='Cantidad de Personas', title='Proprción Docentes/No Docentes')
+        fig2 = px.pie(newDf2, names='Escala', values='Cantidad de Personas', title='Proprción Docentes/No Docentes',color_discrete_sequence=color_scale)
 
         st.plotly_chart(fig2)
     
@@ -294,10 +294,34 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+        
+        st.markdown("### 4. ¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
+        st.write("Aquí el análisis y entre el análisis y la pregunta un gráfico")
 
+        # Filtrar el DataFrame para el departamento de Matemática
+        df_matematicas = df[df["Departamento"] == "Matemática"]
 
-        st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+        # Contar las categorías científicas
+        group_counts = df_matematicas['Categoría Científica'].value_counts()
+
+        # Crear el gráfico de barras con Plotly
+        fig = go.Figure(data=[go.Bar(
+            x=group_counts.index,
+            y=group_counts.values,
+            marker_color=px.colors.sequential.Blues
+        )])
+
+        # Personalizar el gráfico
+        fig.update_layout(
+            title='Cantidad de Profesores por Grupo de Investigación',
+            xaxis_title='Grupos de Investigación',
+            yaxis_title='Cantidad de Profesores',
+            bargap=0.1
+        )
+
+        # Mostrar el gráfico en Streamlit
+        st.plotly_chart(fig, use_container_width=True)
+
         
     elif subtema_seleccionado == "Departamento de Matemática Aplicada":
         st.header("Análisis del departamento de matemática aplicada")

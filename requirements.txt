@@ -1,0 +1,9 @@
+streamlit
+pandas
+plotly.express 
+plotly.graph_objects
+collections 
+matplotlib.pyplot
+streamlit_folium
+folium 
+streamlit_agraph
