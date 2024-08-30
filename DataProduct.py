@@ -664,14 +664,14 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
     
     st.divider()
     subtemas_datos = ["Grupo de Algebra", "Grupo de Vizualizacion y gráficos por computadora", "Grupo de Sistemas de Información e Inteligencia de Negocios", "Grupo de Probabilidades y Estadística"]
-    subtema_seleccionado = st.radio("Subtemas de Datos", subtemas_datos)
+    subtema_seleccionado = st.radio("Grupos de investigación", subtemas_datos)
     
     if subtema_seleccionado == "Grupo de Algebra":
-        st.header("Grupo de Algebra")
+        st.markdown("### Grupo de Algebra")
         st.write("El grupo de investigación en álgebra se enfoca en la exploración profunda de la teoría de representaciones, un área fundamental que estudia las propiedades de la categoría de módulos. Esta rama del álgebra se centra en cómo los objetos algebraicos, como álgebras y grupos, pueden ser representados mediante matrices y transformaciones lineales. A través de seminarios, talleres y colaboraciones interdisciplinarias, nuestro grupo busca fomentar un ambiente dinámico donde se puedan compartir ideas y avances en la investigación. Estamos comprometidos con la formación de nuevos investigadores en el campo del álgebra y la promoción del conocimiento matemático en general.")
         st.markdown("""
         <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
-            <h3 style='color: black;'>Logros y Publicaciones del grupo</h3>
+            <h4 style='color: black;'>Logros y Publicaciones del grupo</h4>
             <p style='color: black;'>
                     . 5 Trabajos de Diploma  <br>
                     . 4 Tesis de Maestría  <br>
@@ -681,11 +681,11 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
         """, unsafe_allow_html=True)
 
     elif subtema_seleccionado == "Grupo de Vizualizacion y gráficos por computadora":
-        st.header("Grupo de Vizualizacion y gráficos por computadora")
+        st.markdown("### Grupo de Vizualizacion y gráficos por computadora")
         st.write("El grupo de investigación en Visualización y Gráficos por Computadora se dedica a la exploración y desarrollo de técnicas avanzadas para el renderizado en tiempo real, con un enfoque particular en fenómenos complejos como la iluminación global, el renderizado de volúmenes y los medios participativos. Una de nuestras principales áreas de investigación es el renderizado en tiempo real, que permite generar imágenes de alta calidad de manera instantánea. Esto es crucial en aplicaciones como videojuegos, simulaciones interactivas y realidad virtual. Nuestros profesores trabajan en optimizar algoritmos y técnicas que permiten lograr una representación visual impresionante sin sacrificar el rendimiento, lo que es fundamental para ofrecer experiencias inmersivas.")
         st.markdown("""
         <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
-            <h3 style='color: black;'>Logros y Publicaciones del grupo</h3>
+            <h4 style='color: black;'>Logros y Publicaciones del grupo</h4>
             <p style='color: black;'>
                     . E-Buffer: Una Representación en Espacio de Vista para Aplicaciones de Iluminación Global en Tiempo Real. Alejandro Piad, Ludwig Leonard. 2014. Ciencias Matemáticas <br> 
                     . A-PIT: Estructura de Subdivisión Espacial Aceleración de Raytracing en GPU. Jean L’Clerc, Alejandro Piad, Ludwig Leonard. 2016. Ciencias Informáticas.  <br>
@@ -696,11 +696,11 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
         
 
     elif subtema_seleccionado == "Grupo de Sistemas de Información e Inteligencia de Negocios":
-        st.header("Grupo de Sistemas de Información e Inteligencia de Negocios")
+        st.markdown("### Grupo de Sistemas de Información e Inteligencia de Negocios")
         st.write("La esencia del grupo de Sistemas de Información e Inteligencia de Negocios (ISBIG – Information Systems and Business Intelligence) es la labor de investigación e innovación en diversas áreas del conocimiento científico y la aplicación práctica, que se caracterizan por su interrelación estrecha con el almacenamiento, el análisis y la obtención de información desde el procesamiento de los datos primarios hasta la generación de conocimiento con vista a la toma de decisiones pertinentes, certeras y oportunas. Se trabaja en la profundización teórico-conceptual y metodológica en relación con el espectro de los enfoques contemporáneos de las bases de datos, que favorecen la actualización incesante de la disciplina Sistemas de Información, impulsan el trabajo científico-estudiantil y asegura el reto en las actividades de posgrado. Dada la diversidad de escenarios y el creciente desvanecimiento de los límites entre las más disímiles ramas de la ciencia y la tecnología, se enfatiza en la interrelación de paradigmas como contribución al manejo de datos heterogéneos e información espacial, el fomento de la calidad de los datos y el control de los proyectos con vistas a propiciar el éxito de la gestión del conocimiento organizacional. Para el desarrollo de soluciones computacionales a problemas complejos se incursiona en la integración de resultados desde la perspectiva de los datos en ramas afines como Sistemas de Bases de Datos, Inteligencia y Analítica de Negocios, Recuperación de Información, Optimización de Consultas, Minería de Datos, Big Data, Detección de Anomalías, Aprendizaje Automático, Procesamiento del Lenguaje Natural.")
         st.markdown("""
         <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
-            <h3 style='color: black;'>Logros y Publicaciones del grupo</h3>
+            <h4 style='color: black;'>Logros y Publicaciones del grupo</h4>
             <p style='color: black;'>
                     . Fernández Montoto, C; Inguanzo Rey, H. J. Utilización de los mundos virtuales en el proceso de enseñanza aprendizaje. Congreso Internacional UNIVERSIDAD 2020. La Habana, Cuba. Febrero de 2020. <br>
                     . Montes de Oca Richardson, M. Estrategias para la capacitación del personal involucrado en proyectos de desarrollo municipal. Evento Provincial de UNIVERSIDAD 2020. La Habana, Cuba. julio de 2020. <br>
@@ -732,11 +732,11 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
         
 
     elif subtema_seleccionado == "Grupo de Probabilidades y Estadística":
-        st.header("Grupo de Probabilidades y Estadística")
+        st.markdown("### Grupo de Probabilidades y Estadística")
         st.write("El grupo de investigación en Probabilidades, Estadística y Optimización se dedica a ejecutar proyectos que integran las tendencias actuales y aportan significativamente al área de estudio. Nuestro enfoque se centra en desarrollar nuevos algoritmos, métodos y modelos teóricos que mejoren los procesos existentes, especialmente en el contexto del análisis de información cuantitativa en medicina y otros campos. Una de nuestras principales metas es ejecutar proyectos de investigación vinculados al desarrollo de nuevos algoritmos y métodos. Esto incluye la creación de modelos teóricos en probabilidades y estadística que optimicen el procesamiento, distribución, análisis e interpretación de datos cuantitativos. Nuestro trabajo busca mejorar la eficacia de los softwares existentes, facilitando así la toma de decisiones informadas en diversas áreas, especialmente en la medicina. Nos enfocamos también en el perfeccionamiento y desarrollo de nuevas técnicas analíticas. Estas técnicas están diseñadas para fortalecer la capacidad del país en la realización de mediciones precisas y evaluaciones exhaustivas en un amplio espectro de aplicaciones. Esto incluye estudios sobre factores medioambientales y la gestión de sistemas urbanos, con especial atención a los problemas de transporte, donde la estadística y la optimización juegan un papel crucial. A través de estos esfuerzos, el grupo de investigación en Probabilidades, Estadística y Optimización busca no solo avanzar en el conocimiento científico, sino también contribuir al desarrollo social y económico del país mediante la aplicación efectiva de estos principios en múltiples áreas.")
         st.markdown("""
         <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
-            <h3 style='color: black;'>Logros y Publicaciones del grupo</h3>
+            <h4 style='color: black;'>Logros y Publicaciones del grupo</h4>
             <p style='color: black;'>
                     2011-2013 <br>
                     . Modelos Matemáticos para el Estudio de Medio Ambiente, Salud y Desarrollo Humano. <br>
@@ -763,14 +763,124 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
             </p>
         </div>
         """, unsafe_allow_html=True)
-        
+    
 
     st.divider()
-    st.markdown("### 2.¿Cuántos profesores son responsables de la enseñanza de maestría?")
-    st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
-    st.markdown("### 3.¿Qué porcentaje de profesores participa en grupos de investigación?")
-    st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+    st.header("Profeores de Maestría")
+    st.write("La calidad de un programa de maestría está profundamente influenciada por la experiencia y el conocimiento de sus profesores. En las maestrías en Ciencia de la Computación y Ciencias Matemáticas, los docentes desempeñan un papel crucial en la formación de los estudiantes, guiándolos a través de conceptos complejos y fomentando un ambiente de aprendizaje colaborativo.")
+    st.markdown("#### Profesores por maestría")
+    st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico") 
+    # Contar la cantidad de profesores por grupo de investigación
+    group_counts = df['Maestría'].value_counts()
 
+    # Crear el gráfico de barras con Plotly
+    fig = go.Figure(data=[go.Bar(
+        x=group_counts.index,
+        y=group_counts.values,
+        marker_color=px.colors.sequential.Blues
+    )])
+
+    # Personalizar el gráfico
+    fig.update_layout(
+        title='Cantidad de profesores en grupos de maestrías',
+        xaxis_title='Grupos de Maestrías',
+        yaxis_title='Cantidad de Profesores',
+        bargap=0.1
+    )
+
+    # Mostrar el gráfico en Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+    
+    
+    st.divider()
+    subtemas_datos = ["Maestría en Ciencias de la Computación", "Maestría en Ciencias Matemáticas"]
+    subtema_seleccionado = st.radio("Maestrías", subtemas_datos)
+
+    if subtema_seleccionado == "Maestría en Ciencias de la Computación":
+        st.markdown("### Maestría en Ciencias de la Computación")
+        st.markdown("#### Profesores que imparten Maestría")
+        st.write("Dra. C. Lucina García Hernández ")
+        st.write("Dr. C. Alberto Fernández Oliva")
+        st.write("Dr. C. Yudivián Almeyda Cruz")
+        st.write("Dr. C. Alejandro Mesejo Chiong")
+        st.write("Dr. C. Ricardo Sánchez Casanova")
+        st.write("Cs. Eduardo Quesada Orozco")
+        st.write("Cs. Ludwig Leonard Méndez")
+        st.markdown("""
+        <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
+            <h4 style='color: black;'>Cursos de posgrado</h4>
+            <p style='color: black;'>
+                    Modelos analíticos y data warehousing <br>
+                    Análisis de datos. Introducción al Big Data <br>
+                    Análisis de redes <br>
+                    Minería de textos <br>
+                    Machine Learning <br> 
+                    Introducción a la criptografía y blockchain <br>
+                    Estrategias de impacto y visibilidad en los resultados de las investigaciones <br>
+                    Sistemas de Bases de Datos en Arquitectura Cliente Servidor <br>
+                    Multiparadigmas de Programación <br>
+                    Gráficos por computadora <br>
+                    Algoritmos Heurísticos y Metaheurísticos <br>
+                    Sistemas de extracción de conocimiento <br>
+                    Buenas Prácticas de Desarrollo de Software Ágil <br>
+                    Metodología de la investigación <br>
+                    Estructuras de Datos Avanzadas <br>
+                    Inteligencia y Analítica de Negocios <br>
+                    Simulación Basada en Principios Físicos <br>
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    elif subtema_seleccionado == "Maestría en Ciencias Matemáticas":
+        st.markdown("### Maestría en Ciencias Metemáticas")
+        st.markdown("#### Profesores que imparten Maestría")
+        st.write("Dr.C. Ángela Mireya León Mecías ")
+        st.write("Dr.C. Rita Roldán Inguanzo")
+        st.write("Dr.C. Fidel Hernández Advíncula")
+        st.write("Dr.C. Mariano Rodríguez Ricard")
+        st.write("Dr.C. Marta L. Baguer Díaz-Romañach")
+        st.write("Dr.C. Gemayqzel Bouza Allende")
+        st.write("Dr.C. Carlos Bouza Herrera")
+        st.markdown("""
+        <div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'>
+            <h4 style='color: black;'>Cursos de posgrado</h4>
+            <p style='color: black;'>
+                    Análisis Matemático <br>
+                    Álgebra <br>
+                    Ecuaciones Diferenciales <br>
+                    Mecánica <br>
+                    Enseñanza de la Matemática <br>
+                    Matemática Numérica <br>
+                    Optimización <br>
+                    Probabilidades y Estadística  <br> 
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.divider()
+    st.header("Profesores miembro del consejo científico")
+    st.write("Órgano asesor del Consejo de Dirección para la concepción e instrumentación de la política científica en su sentido más general que incluye la actividad docente y metodológica de investigación de pregrado, de superación y la actividad académica en su conjunto. Entre sus actividades precuentes tenemos: Análisis de los proyectos nacionales e internacionales, otorgamiento de avales. Aprobación de temas de doctorados, constituye el Comité Académico del Programa de Doctorado en Ciencias Matemáticas. Análisis de premios de investigación     Anualmente Convocamos y otorgamos el Premio del Consejo Científico a trabajos de investigación de estudiantes relevantes presentados en la JCE")
+    st.markdown("### 1.¿Cuántos profesores son miembros del consejo científico")
+    st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico") 
+    group_counts = df['Actividad en el Consejo Científico'].value_counts()
+
+    # Crear el gráfico de barras con Plotly
+    fig = go.Figure(data=[go.Bar(
+        x=group_counts.index,
+        y=group_counts.values,
+        marker_color=px.colors.sequential.Blues
+    )])
+
+    # Personalizar el gráfico
+    fig.update_layout(
+        title='Distribución de las actividades en el consejo científico',
+        xaxis_title='Actividades',
+        yaxis_title='Cantidad de Profesores',
+        bargap=0.1
+    )
+
+    # Mostrar el gráfico en Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+    
 # Sección seleccionada
 if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo del Profesorado":
     st.header("Un Análisis Comparativo del Profesorado")
