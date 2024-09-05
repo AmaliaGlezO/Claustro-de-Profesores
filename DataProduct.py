@@ -1024,6 +1024,29 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
         st.markdown("### ¿Cómo varía la antigüedad promedio de los profesores según su cargo?")
         st.write("Compara la antigüedad de los profesores en diferentes cargos (decano, profesor titular, profesor auxiliar, etc.).")
     
+        # Calcular la antigüedad promedio por cargo
+        antiguedad_promedio = data.groupby('Cargo')['Annos de servicio'].mean().reset_index(name='Antigüedad Promedio')
+
+        # Crear el gráfico de barras
+        fig = px.bar(antiguedad_promedio, 
+                    x='Cargo', 
+                    y='Antigüedad Promedio', 
+                    title='Antigüedad Promedio de Profesores por Cargo',
+                    color='Antigüedad Promedio',
+                    color_continuous_scale=px.colors.sequential.Blues_r)
+
+        # Personalizar el diseño del gráfico
+        fig.update_traces(hoverinfo='x+y')
+        fig.update_layout(margin=dict(t=50, l=0, r=0, b=0),
+                        xaxis_title='Cargo',
+                        yaxis_title='Antigüedad Promedio (años)',
+                        yaxis=dict(tickmode='linear'),
+                        height=900,  
+                        width=1000) 
+        
+
+        # Mostrar el gráfico en Streamlit
+        st.plotly_chart(fig, use_container_width=True)
     
     elif opcion_seleccionada == "2. Género y Cargo":
         st.markdown("### ¿Existen diferencias en la distribución de género según el cargo en la facultad?")
@@ -1037,7 +1060,7 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
                           values='Cantidad', 
                           title='Distribución de Género según Cargo',
                           color='Cantidad',
-                          color_continuous_scale=px.colors.sequential.Viridis)
+                          color_continuous_scale= px.colors.sequential.Blues_r)
 
         # Personalizar el diseño del gráfico
         fig.update_traces(hoverinfo='label+value+percent entry')

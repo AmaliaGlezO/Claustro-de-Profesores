@@ -1,55 +1,40 @@
 import streamlit as st
 import pandas as pd 
+import plotly.express as px
+import plotly.graph_objects as go
+from collections import Counter
+import matplotlib.pyplot as plt
+from streamlit_folium import st_folium
+import folium 
 from streamlit_agraph import agraph, Node, Edge, Config
 
-# Cargar los datos desde el CSV
-df = pd.read_csv('maestría e investigación.csv')
+with open('antiguedad-matematica.csv', 'r') as f:
+    file=pd.read_csv(f)
+data=pd.DataFrame(file)
+st.dataframe(data)
+if 'Annos de servicio' in data.columns:
+    # Reemplazar valores faltantes por None
+    data['Annos de servicio'] = data['Annos de servicio'].fillna(None)
 
-# Crear listas para nodos y aristas
-nodes = []
-edges = []
+    # Calcular la antigüedad promedio por cargo
+    antiguedad_promedio = data.groupby('Cargo')['Annos de servicio'].mean().reset_index(name='Antigüedad Promedio')
 
-# Agregar el nodo central
-nodes.append(Node(id="Extras_Profesores", label="Extras de los profesores", size=30))
+    # Crear el gráfico de barras
+    fig = px.bar(antiguedad_promedio, 
+                 x='Cargo', 
+                 y='Antigüedad Promedio', 
+                 title='Antigüedad Promedio de Profesores por Cargo',
+                 color='Antigüedad Promedio',
+                 color_continuous_scale=px.colors.sequential.Viridis)
 
-# Crear nodos para cada actividad
-maestria_node = Node(id="Maestria", label="Imparten Maestría", size=25)
-grupos_investigacion_node = Node(id="Grupos_Investigacion", label="Grupos de Investigación", size=25)
-consejo_cientifico_node = Node(id="Consejo_Cientifico", label="Consejo Científico", size=25)
+    # Personalizar el diseño del gráfico
+    fig.update_traces(hoverinfo='x+y')
+    fig.update_layout(margin=dict(t=50, l=0, r=0, b=0),
+                      xaxis_title='Cargo',
+                      yaxis_title='Antigüedad Promedio (años)',
+                      yaxis=dict(tickmode='linear'))
 
-# Agregar nodos de actividades a la lista de nodos
-nodes.append(maestria_node)
-nodes.append(grupos_investigacion_node)
-nodes.append(consejo_cientifico_node)
-
-# Conectar el nodo central a los nodos de actividades
-edges.append(Edge(source="Extras_Profesores", target="Maestria"))
-edges.append(Edge(source="Extras_Profesores", target="Grupos_Investigacion"))
-edges.append(Edge(source="Extras_Profesores", target="Consejo_Cientifico"))
-
-# Agregar nodos de profesores y conexiones a los nodos de actividades
-for index, row in df.iterrows():
-    profesor_id = f"{row['Nombre']} {row['Apellidos']}"
-    nodes.append(Node(id=profesor_id, label=profesor_id, size=20))
-    
-    # Conectar a los nodos de actividades
-    if row['Imparte Maestria'] == 1:
-        edges.append(Edge(source=maestria_node.id, target=profesor_id))
-    
-    if row['Participa en grupos de investigación'] == 1:
-        edges.append(Edge(source=grupos_investigacion_node.id, target=profesor_id))
-    
-    if row['Miembro del consejo científico'] == 1:
-        edges.append(Edge(source=consejo_cientifico_node.id, target=profesor_id))
-
-# Configuración del gráfico
-config = Config(width=950,
-                height=950,
-                directed=True, 
-                physics=True, 
-                hierarchical=False)
-
-# Generar el gráfico
-return_value = agraph(nodes=nodes, 
-                      edges=edges, 
-                      config=config)
+    # Mostrar el gráfico en Streamlit
+    st.plotly_chart(fig)
+else:
+    st.error("La columna 'Años de servicio' no se encuentra en el DataFrame.")
