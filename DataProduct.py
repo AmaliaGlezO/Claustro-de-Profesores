@@ -294,12 +294,24 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+        df = pd.read_csv('antiguedad-matematica.csv')
+        # Calcular los promedios de los años de servicio
+        promedios = df.groupby('Departamento')['Años de servicio'].mean()
+        colors = ['blue' if Departamento == 'Matematica' else 'gray' for Departamento in promedios.index]
+        fig = go.Figure(data = [go.Bar(x=promedios.index,y=promedios,marker_color=colors)])
+        fig.update_layout(
+            title = 'Comparación de los promedios de años de servicio por departamento',
+            xaxis_title = 'Departamento',
+            yaxis_title = 'Años de servicio',
+            bargap = 0.1
+        )
+        st.plotly_chart(fig)
         
         st.markdown("### 4. ¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
         st.write("Aquí el análisis y entre el análisis y la pregunta un gráfico")
 
         # Filtrar el DataFrame para el departamento de Matemática
-        df_matematicas = df[df["Departamento"] == "Matemática"]
+        df_matematicas = data[data["Departamento"] == "Matemática"]
 
         # Contar las categorías científicas
         group_counts = df_matematicas['Categoría Científica'].value_counts()
@@ -413,7 +425,19 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
-
+        df = pd.read_csv('antiguedad-matematica.csv')
+        # Calcular los promedios de los años de servicio
+        promedios = df.groupby('Departamento')['Años de servicio'].mean()
+        colors = ['blue' if Departamento == 'Matematica Aplicada' else 'gray' for Departamento in promedios.index]
+        fig = go.Figure(data = [go.Bar(x=promedios.index,y=promedios,marker_color=colors)])
+        fig.update_layout(
+            title = 'Comparación de los promedios de años de servicio por departamento',
+            xaxis_title = 'Departamento',
+            yaxis_title = 'Años de servicio',
+            bargap = 0.1
+        )
+        st.plotly_chart(fig)
+        
         st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
 
@@ -506,7 +530,19 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
-
+        df = pd.read_csv('antiguedad-matematica.csv')
+        # Calcular los promedios de los años de servicio
+        promedios = df.groupby('Departamento')['Años de servicio'].mean()
+        colors = ['blue' if Departamento == 'Computacion I' else 'gray' for Departamento in promedios.index]
+        fig = go.Figure(data = [go.Bar(x=promedios.index,y=promedios,marker_color=colors)])
+        fig.update_layout(
+            title = 'Comparación de los promedios de años de servicio por departamento',
+            xaxis_title = 'Departamento',
+            yaxis_title = 'Años de servicio',
+            bargap = 0.1
+        )
+        st.plotly_chart(fig)
+        
         st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
 
@@ -600,6 +636,18 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+        df = pd.read_csv('antiguedad-matematica.csv')
+        # Calcular los promedios de los años de servicio
+        promedios = df.groupby('Departamento')['Años de servicio'].mean()
+        colors = ['blue' if Departamento == 'Computacion II' else 'gray' for Departamento in promedios.index]
+        fig = go.Figure(data = [go.Bar(x=promedios.index,y=promedios,marker_color=colors)])
+        fig.update_layout( 
+            title = 'Comparación de los promedios de años de servicio por departamento',
+            xaxis_title = 'Departamento',
+            yaxis_title = 'Años de servicio',
+            bargap = 0.1
+        )
+        st.plotly_chart(fig)        
 
         st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
         st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
