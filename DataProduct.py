@@ -756,7 +756,7 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
     fig = go.Figure(data=[go.Bar(
         x=group_counts.index,
         y=group_counts.values,
-        marker_color=px.colors.sequential.Blues
+        marker_color=px.colors.sequential.Blues_r
     )])
 
     # Personalizar el gráfico
@@ -885,7 +885,7 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
     fig = go.Figure(data=[go.Bar(
         x=group_counts.index,
         y=group_counts.values,
-        marker_color=px.colors.sequential.Blues
+        marker_color=px.colors.sequential.Blues_r
     )])
 
     # Personalizar el gráfico
@@ -975,7 +975,7 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
     fig = go.Figure(data=[go.Bar(
         x=group_counts.index,
         y=group_counts.values,
-        marker_color=px.colors.sequential.Blues
+        marker_color=px.colors.sequential.Blues_r
     )])
 
     # Personalizar el gráfico
