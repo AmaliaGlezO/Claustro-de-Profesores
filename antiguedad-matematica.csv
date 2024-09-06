@@ -1,4 +1,4 @@
-Nombre y Apellidos,Sexo,Cargo,Clasif. Por escala,Categoria docente,CI,Departamento,Miembros del Consejo científico,Categoría Científica,Edad,Annos de servicio
+Nombre y Apellidos,Sexo,Cargo,Clasif. Por escala,Categoria docente,CI,Departamento,Miembros del Consejo cientifico,Categoria Cientifica,Edad,Annos de servicio
 Alberto Fernandez Oliva,M,Jefe de Departamento Docente,Docente,Profesor Titular,55093009462,Computacion I,0,,69,41
 Johanna Campbell Amos,F,Profesor Asistente,Docente,Profesor Asistente,85011507535,Computacion I,0,,39,16
 Aracelys Garcia Armenteros,F,Profesor Auxiliar,Docente,Profesor Auxiliar,82100817418,Computacion I,0,,42,18
@@ -6,7 +6,7 @@ Ania Mesa Rodriguez,F,Instructor,Docente,Instructor,96033109538,Computacion I,0,
 Roberto Bernal Arencibia,M,Instructor,Docente,Instructor,93061704022,Computacion I,0,M.C,31,7
 David Balbuena Cruz,M,Instructor,Docente,Instructor,97121207142 ,Computacion I,0,licenciado,27,0
 Alfredo Somoza Moreno,M,Profesor Asistente,Docente,Profesor Asistente,73100905903,Computacion II,0,,51,27
-Concepcion Valdes Castro,F,Profesor Titular,Docente,Profesor Titular,46111510798,Computacion II,1,doctora,78,60
+Concepcion Valdes Castro,F,Profesor Titular,Docente,Profesor Titular,46111510798,Computacion II,1,doctor,78,60
 Lucina Garcia Hernandez,F,Profesor Auxiliar,Docente,Profesor Auxiliar,49063002137 ,Computacion II,0,,75,6
 Luciano Garcia Garrido,M,Profesor Titular,Docente,Profesor Titular,36040801509,Computacion II,1,doctor,88,0
 Miguel Katrib Mora,M,Profesor Titular,Docente,Profesor Titular,49031801822,Computacion II,1,doctor,75,52
@@ -30,7 +30,7 @@ Jorge Maria Lemagne Perez,M,Profesor Titular,Docente,Profesor Titular,4912092548
 Reynaldo Rodriguez Ramos,M,Profesor Titular,Docente,Profesor Titular,58082209365,Matematica,0,doctor,66,44
 Celia Tamara Gonzalez Gonzalez,F,Jefe de Departamento Docente,Docente,Profesor Auxiliar,81111705219,Matematica,0,M.C,43,19
 Jose Enrique Valdes Castro,M,Profesor Titular,Docente,Profesor Titular,49070325520,Matematica,0,,75,50
-Gemayqzel Bouza Allende,F,Jefe de Departamento Docente,Docente,Profesor Titular,77092305534,Matematica,1,doctora,77,0
+Gemayqzel Bouza Allende,F,Jefe de Departamento Docente,Docente,Profesor Titular,77092305534,Matematica,1,doctor,77,0
 Valentina Badia Albanes,F,Profesor Auxiliar,Docente,Profesor Auxiliar,63101503552,Matematica,0,M.C,61,33
 Juan Carlos Lopez Realpozo,M,Profesor Auxiliar,Docente,Profesor Auxiliar,58050900561,Matematica,0,,66,41
 Hiram Borbolla Hernandez,M,Instructor,Docente,Instructor,91112229549 ,Matematica,0,,33,8
@@ -53,19 +53,19 @@ Rocio Ortiz Gancedo,F,,,,,Matematica,0,,,0
 Adriana Diaz Cordero,F,Profesor Asistente,Docente,Profesor Asistente,91110430259,Matematica,0,,33,10
 Carlos David Munniz Chall,M,Instructor,Docente,Instructor,94041747423,Matematica,0,,30,0
 Marlene Cabeiro Acosta,F,,,Instructor,,Matematica,0,,,0
-Idania Esther Urrutia Romani,F,Profesor Titular,Docente,Profesor Titular,66081020213,Matematica Aplicada,0,doctora,58,34
+Idania Esther Urrutia Romani,F,Profesor Titular,Docente,Profesor Titular,66081020213,Matematica Aplicada,0,doctor,58,34
 Fernando R. Rodriguez Flores,M,Profesor Asistente,Docente,Profesor Asistente,79101407782,Matematica Aplicada,0,,45,20
-Sira Maria Allende Alonso,F,Profesor Titular,Docente,Profesor Titular,49100811617,Matematica Aplicada,1,doctora,75,0
-Marta Lourdes Baguer Diaz,F,Profesor Titular,Docente,Profesor Titular,60111001610,Matematica Aplicada,1,doctora,64,32
-Aymee De Los Angeles Marrero Severo,F,Profesor Principal de anno Academico,Docente,Profesor Titular,58030400533,Matematica Aplicada,1,doctora,66,41
+Sira Maria Allende Alonso,F,Profesor Titular,Docente,Profesor Titular,49100811617,Matematica Aplicada,1,doctor,75,0
+Marta Lourdes Baguer Diaz,F,Profesor Titular,Docente,Profesor Titular,60111001610,Matematica Aplicada,1,doctor,64,32
+Aymee De Los Angeles Marrero Severo,F,Profesor Principal de anno Academico,Docente,Profesor Titular,58030400533,Matematica Aplicada,1,doctor,66,41
 Carlos Narciso Bouza Herrera,M,Profesor Titular,Docente,Profesor Titular,42102901601,Matematica Aplicada,1,doctor,82,0
 Vivian del R. Sistachs Vega,F,Profesor Titular,Docente,Profesor Titular,60100700950,Matematica Aplicada,0,,64,40
 Yudivian Almeida Cruz,M,Profesor Titular,Docente,Profesor Auxiliar,80102206380,Matematica Aplicada,1,doctor,44,19
 Jose Alejandro Mesejo Chiong,M,Segundo jefe de departamento docente,Docente,Profesor Titular,62101601709,Matematica Aplicada,1,doctor,62,36
-Angela Mireya Leon Mecias,F,Profesor Titular,Docente,Profesor Titular,63040709479,Matematica Aplicada,1,doctora,61,36
+Angela Mireya Leon Mecias,F,Profesor Titular,Docente,Profesor Titular,63040709479,Matematica Aplicada,1,doctor,61,36
 Damian Valdes Santiago,M,Profesor Auxiliar,Docente,Profesor Auxiliar,89042620524,Matematica Aplicada,0,,35,0
 Yanet Garcia Serrano,F,Profesor Principal de anno Academico,Docente,Profesor Auxiliar,76101703296,Matematica Aplicada,0,,48,23
-Roxana Cabrera Puig,F,Profesor Principal de anno Academico,Docente,Profesor Titular,71100126616,Matematica Aplicada,0,doctora,53,29
+Roxana Cabrera Puig,F,Profesor Principal de anno Academico,Docente,Profesor Titular,71100126616,Matematica Aplicada,0,doctor,53,29
 Frank Michel Enrique Hevia,M,Profesor Titular,Docente,Profesor Titular,82100309423,Matematica Aplicada,0,doctor,42,17
 Daniela Gonzalez Beltran,F,Instructor,Docente,Instructor,96051209954,Matematica Aplicada,0,,28,4
 Miraida Ferras Ferras,F,Profesor Titular,Docente,Profesor Titular,67090624374,Matematica Aplicada,0,,57,36
@@ -76,7 +76,7 @@ Leyanis Falcon Hernandez,F,,Docente,,,Matematica Aplicada,0,,,0
 Debora Arias Hernandez,F,Profesor Asistente,Docente,Profesor Asistente,63062202257,Matematica Aplicada,0,,61,36
 Jacqueline Dominguez Pennalver,F,Tecnico B en gestion universitaria,No Docente,,69090302750,MATCOM,0,,55,0
 Norka Reyes Lora,F,Tecnico C en gestion universitaria,No Docente,,69091702694,MATCOM,0,,55,0
-Giani Eganna Fernandez,M,Vicedecano,Docente,Profesor Titular,81123005227,MATCOM,1,doctora,40,0
+Giani Eganna Fernandez,M,Vicedecano,Docente,Profesor Titular,81123005227,MATCOM,1,doctor,40,0
 Jorge Fernandez Diaz,M,"Especialista en servicios, procesamiento y analisis de informacion",No Docente,,78070906062,MATCOM,0,,46,0
 Wilfredo Morales Lezca,M,Decano,Docente,Profesor Auxiliar,80040204143,MATCOM,1,MSc,44,0
 Genry Perez Rodriguez,M,Jefe de Departamento(ADM Facultad),No Docente,,81050905986,MATCOM,0,,43,0

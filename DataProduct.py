@@ -114,12 +114,19 @@ elif seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuer
     st.divider()
 
     # Subtemas para la sección de Radiografía de la Facultad
-    subtemas_datos = ["Distribución de Profesores", "Análisis de Cargos", "Proporción Docentes/No Docentes","Categoría científica"]
+    subtemas_datos = ["Distribución de Profesores", "Análisis de Cargos", "Proporción Docentes/No Docentes"]
     subtema_seleccionado = st.sidebar.radio("Análisis del cuerpo docente", subtemas_datos)
     
     if subtema_seleccionado == "Distribución de Profesores":
         st.header("¿Cuál es la distribución de profesores por departamento?")
-        st.write("Aquí se analiza la distribución de profesores por departamento.")
+        st.write("La distribución de profesores por departamentos en la Facultad de Matemática es un aspecto crucial para entender la estructura y funcionamiento de la institución.")
+        st.write('La facultad cuenta con los siguientes departamentos:')
+        st.write('• Matemática  • Matemática Aplicada  • Computación I  • Computación II')
+        st.write('Además, cuenta con:')
+        st.write('• Secretaría • Laboratorio de Computación • Instituto de Criptografía')
+        st.write('La representación de los profesores de matemática es mayor respecto a los de computación. La minoría la componen los demás trabajadores de secretaría y laboratorio.'
+                  'Sin embargo, hay un gran porcentaje de trabajadores de la facultad que no tienen una asignación específica de departamento.')
+
         newDf = data.groupby("Departamento")["Nombre y Apellidos"].count().reset_index()
         newDf.columns = ["Departamento", "Cantidad de Personas"]
         # Definir una escala de azules para los colores
@@ -130,29 +137,29 @@ elif seccion_seleccionada == "Radiografía de la Facultad: Un Análisis del Cuer
 
     elif subtema_seleccionado == "Análisis de Cargos":
         st.header("¿Cuál es la distribución de cargos en la facultad?")
-        st.write("Examina cuántos profesores ocupan cada cargo (decano, profesor auxiliar, etc.).")
+        st.write('Para entender mejor la estructura y composición del claustro de profesores, es necesario analizar los diferentes cargos que desempeñan.'
+        'La mayor cantidad de profesores se encuentra en las categorías de Instructor y Profesor Titular. Estos dos grupos, por lo general, abarcan la mayor parte de las actividades de enseñanza e investigación de la facultad.'
+        'A continuación, se presenta una visualización que muestra la cantidad de personas que ocupan los diferentes cargos en la facultad. Esta información nos permite visualizar la estructura de los cargos, así como su distribución.')
         newDf1 = data.groupby("Cargo")["Nombre y Apellidos"].count().reset_index()
         newDf1.columns = ["Cargo", "Cantidad de Profesores"]
 
         #Un gráfico de barras para la cantidad de personas dependiendo del cargo
-        fig1 = px.bar(newDf1, x='Cargo', y='Cantidad de Profesores', title='Cantidad de Profesores por Cargo')
+        fig1 = px.bar(newDf1, x='Cantidad de Profesores', y='Cargo', title='Cantidad de Profesores por Cargo')
 
         st.plotly_chart(fig1)
         
     elif subtema_seleccionado == "Proporción Docentes/No Docentes":
         st.header("¿Cuál es la proporción de docentes frente a no docentes?")
-        st.write("Aquí se compara la cantidad de docentes frente a no docentes.")
+        st.write("Los docentes, con su rol central en la enseñanza y la investigación, y los no docentes, con su apoyo crucial en la gestión y el funcionamiento diario, son componentes esenciales del funcionamiento de la institución."
+        "Los trabajadores docentes representan aproximadamente un 81%, mientras que los no docentes representan un pequeño porcentaje, aproximadamente un 16%.")
         newDf2 = data.groupby("Clasif. Por escala")["Nombre y Apellidos"].count().reset_index()
         newDf2.columns = ["Escala", "Cantidad de Personas"]
         color_scale = px.colors.sequential.Blues_r
-        #Un gráfico de pastel para ver la cantidad de dependiendo de sugranos
+        #Un gráfico de pastel para ver la cantidad de dependiendo de su grado
         fig2 = px.pie(newDf2, names='Escala', values='Cantidad de Personas', title='Proprción Docentes/No Docentes',color_discrete_sequence=color_scale)
 
         st.plotly_chart(fig2)
     
-    elif subtema_seleccionado == "Categoría científica":
-        st.header("¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
-        st.write("un análisis de este tema")
 
 elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructura de la Facultad":
     st.header("Mapeando la Estructura de la Facultad")
