@@ -689,7 +689,10 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
 
     st.divider()
     st.header("Grupos de investigación")
-    st.write("Analisis e introducción de los grupos de investigación")
+    st.write("La investigación académica es un pilar fundamental en el desarrollo y avance del conocimiento. En esta facultad, los grupos de investigación desempeñan un papel crucial en la generación de nuevas ideas, la resolución de problemas complejos y la contribución al progreso científico y tecnológico.")
+    st.write('Los grupos de investigación de la facultad son: ')
+    st.write('.Probabilidades y Estadísticas .Sistemas de Información e Inteligencia de Negocios .Visualización y Gráficos por Computadora .Álgebra')
+    st.write('Gran parte de los profesores pertenecen al grupo de Probabilidades y Estadísticas, y el grupo con menor participación es el de Álgebra.')
     
     group_counts = df['Grupo de investigación'].value_counts()
 
@@ -816,7 +819,8 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
     st.header("Profeores de Maestría")
     st.write("La calidad de un programa de maestría está profundamente influenciada por la experiencia y el conocimiento de sus profesores. En las maestrías en Ciencia de la Computación y Ciencias Matemáticas, los docentes desempeñan un papel crucial en la formación de los estudiantes, guiándolos a través de conceptos complejos y fomentando un ambiente de aprendizaje colaborativo.")
     st.markdown("#### Profesores por maestría")
-    st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico") 
+    st.write("Los profesores de maestría son fundamentales para el éxito de los programas de posgrado de la facultad."
+    'En la facultad se imparte la maestría en Ciencias de la Computación y en Ciencias Matemáticas. La cantidad de profesores en ambas maestrías es la misma, por lo que existe un equilibrio.') 
     # Contar la cantidad de profesores por grupo de investigación
     group_counts = df['Maestría'].value_counts()
 
@@ -906,8 +910,10 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
     st.divider()
     st.header("Profesores miembro del consejo científico")
     st.write("Órgano asesor del Consejo de Dirección para la concepción e instrumentación de la política científica en su sentido más general que incluye la actividad docente y metodológica de investigación de pregrado, de superación y la actividad académica en su conjunto. Entre sus actividades precuentes tenemos: Análisis de los proyectos nacionales e internacionales, otorgamiento de avales. Aprobación de temas de doctorados, constituye el Comité Académico del Programa de Doctorado en Ciencias Matemáticas. Análisis de premios de investigación     Anualmente Convocamos y otorgamos el Premio del Consejo Científico a trabajos de investigación de estudiantes relevantes presentados en la JCE")
-    st.markdown("### 1.¿Cuántos profesores son miembros del consejo científico")
-    st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico") 
+    st.markdown("### 1.¿Cuántos profesores son miembros del consejo científico?")
+    st.write("En nuestra facultad, contamos con un grupo destacado de profesores que forman parte del consejo científico. Ellos no solo se dedican a la enseñanza y la investigación, sino que también desempeñan un papel crucial en la toma de decisiones estratégicas."
+    'El consejo científico está formado por un presidente, vicepresidente, secretario, miembro permanente y los demás miembros. ') 
+    
     group_counts = df['Actividad en el Consejo Científico'].value_counts()
 
     # Crear el gráfico de barras con Plotly
