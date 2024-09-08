@@ -967,15 +967,16 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
     # Contenido basado en la opción seleccionada
     if opcion_seleccionada == "1. Antigüedad y Cargo":
         st.markdown("### ¿Cómo varía la antigüedad promedio de los profesores según su cargo?")
-        st.write("Compara la antigüedad de los profesores en diferentes cargos (decano, profesor titular, profesor auxiliar, etc.).")
-    
+        st.write("En este análisis, se examina la antigüedad de los profesores que ocupan diversos cargos dentro de la facultad, tales como decano, profesor titular, profesor auxiliar, entre otros. La comparación de la antigüedad en estos roles nos permitirá entender mejor la distribución de la experiencia y el conocimiento acumulado."
+        'También proporcionará una visión integral de cómo la experiencia se distribuye entre los diferentes niveles de responsabilidad.')
+        
         # Calcular la antigüedad promedio por cargo
         antiguedad_promedio = data.groupby('Cargo')['Annos de servicio'].mean().reset_index(name='Antigüedad Promedio')
 
         # Crear el gráfico de barras
         fig = px.bar(antiguedad_promedio, 
-                    x='Cargo', 
-                    y='Antigüedad Promedio', 
+                    x='Antigüedad Promedio', 
+                    y='Cargo', 
                     title='Antigüedad Promedio de Profesores por Cargo',
                     color='Antigüedad Promedio',
                     color_continuous_scale=px.colors.sequential.Blues_r)
@@ -995,8 +996,8 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
     
     elif opcion_seleccionada == "2. Género y Cargo":
         st.markdown("### ¿Existen diferencias en la distribución de género según el cargo en la facultad?")
-        st.write("Analiza si hay una representación equitativa de géneros en los distintos niveles de cargo.")
-
+        st.write("En este análisis, se investigará la representación de géneros en los diferentes niveles de cargo dentro de nuestra facultad. El objetivo es determinar si existe una distribución equitativa entre hombres y mujeres en roles como decano, profesor titular, profesor auxiliar, entre otros.")
+        
         # Agrupar por cargo y sexo, y contar la cantidad de cada uno
         distribucion_genero = data.groupby(['Cargo', 'Sexo']).size().reset_index(name='Cantidad')
         # Crear el gráfico de pastel en forma de anillo
@@ -1019,10 +1020,9 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
         st.write("Compara la participación en investigación entre diferentes categorías científicas.")
 
         # Filtrar los miembros del consejo científico
-        miembros_consejo = data[data['Miembros del consejo cientifico'] == 1]
+        miembros_consejo = data[data['Miembros del Consejo cientifico'] == 1]
 
-        # Extraer nombres y apellidos
-        nombres_apellidos = miembros_consejo[['Nombre y Apellido']]  # Asegúrate de que estas columnas existan
+        nombres_apellidos = miembros_consejo[['Nombre y Apellidos']] 
         st.write("### Miembros del Consejo Científico")
         st.write(nombres_apellidos)
 
