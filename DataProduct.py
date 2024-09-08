@@ -220,7 +220,9 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.divider()
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
-        st.write("Aqui el analisis y entre el análisis y la pregunta un grafico")
+        st.write("La edad de los docentes puede influir en diversos factores, como la experiencia, la innovación en métodos de enseñanza y la capacidad de adaptación a nuevas tecnologías y enfoques pedagógicos."
+        'En este departamento, existe una mezcla de edades, con un grupo considerable de profesores con edades entre 20 y 30 años, lo que indica una presencia significativa de profesionales jóvenes. Sin embargo, también se observa una cantidad similar de personas en el rango de 70 a 80 años, representando la edad más avanzada, y la edad promedio se ubica entre 40 y 50 años.' )
+
         data_filtred=data[data['Departamento']=='Matematica']
         ages=[] #para guardar todas las edades de los profes
         for i in data_filtred['CI']:
@@ -278,32 +280,28 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.plotly_chart(fig3)
 
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")  
+        st.write('Un análisis que se centra en la distribución de género dentro de la facultad nos ayuda a identificar posibles disparidades. Los resultados muestran que la mayoría de los profesores son hombres, aunque no existe una gran diferencia en cuanto a la cantidad de mujeres.' )
+        
+        cant_gender1 = data_filtred['Sexo'].value_counts()
 
-        cant_gender1=[]#Aqui se almacena la cantidad de cada genero
-        cant_woman1=0
-        cant_man1=0
-        for i in data_filtred['Sexo']: 
-            if i=='F': 
-                cant_woman1+=1
-            if i=='M':
-                cant_man1+=1
-        cant_gender1.append(cant_man1)
-        cant_gender1.append(cant_woman1)
+        cant_man1 = cant_gender1.get('M', 0)
+        cant_woman1 = cant_gender1.get('F', 0)
 
-        df1 = pd.DataFrame({
-            'Género': ['Hombres', 'Mujeres'],
-            'Cantidad': cant_gender1
+        df_gender = pd.DataFrame({
+            'Sexo': ['Masculino', 'Femenino'],
+            'Cantidad': [cant_man1, cant_woman1]
         })
 
-        fig8 = px.bar(df1, x='Género', y='Cantidad', color='Género', title='Cantidad de Hombres y Mujeres')
+        fig8 = px.bar(df_gender, x='Sexo', y='Cantidad', color='Sexo', title='Cantidad de Hombres y Mujeres')
         st.plotly_chart(fig8)
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
-        df = pd.read_csv('antiguedad-matematica.csv')
+        st.write("La experiencia de los profesores juega un papel crucial en la calidad de la educación impartida."
+        'El siguiente gráfico de barras muestra una comparación del promedio de años de experiencia de los profesores de cada departamento.'
+        'El departamento de Matemática, en comparación con los años de experiencia de los demás departamentos, se coloca como penúltimo, con una pequeña diferencia respecto al último.')
+       
         # Calcular los promedios de los años de servicio
-        promedios = df.groupby('Departamento')['Años de servicio'].mean()
+        promedios = data.groupby('Departamento')['Annos de servicio'].mean()
         colors = ['blue' if Departamento == 'Matematica' else 'gray' for Departamento in promedios.index]
         fig = go.Figure(data = [go.Bar(x=promedios.index,y=promedios,marker_color=colors)])
         fig.update_layout(
@@ -312,25 +310,7 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
             yaxis_title = 'Años de servicio',
             bargap = 0.1
         )
-        st.plotly_chart(fig)
-        
-        st.markdown("### 4. ¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
-        st.write("Aquí el análisis y entre el análisis y la pregunta un gráfico")
-        df = pd.read_csv('antiguedad-matematica.csv')
-
-        # Filtrar los datos para el departamento 1
-        df_departamento1 = df[df['Departamento'] == 'Matematica']
-
-        # Contar la cantidad de profesores por categoría científica
-        categorias_count = df_departamento1['Categoría Científica'].value_counts()
-
-        # Crear el gráfico de pastel
-        fig = px.pie(categorias_count, values=categorias_count.values, names=categorias_count.index,
-                     title='Cantidad de Profesores por Categoría Científica en el Departamento',
-                    color=categorias_count.index, 
-                    color_discrete_sequence=px.colors.sequential.Blues_r)
-
-        st.plotly_chart(fig)    
+        st.plotly_chart(fig)   
 
         
     elif subtema_seleccionado == "Departamento de Matemática Aplicada":
@@ -339,7 +319,8 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.divider()
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+        st.write(" La edad de los docentes puede influir en diversos factores, como la experiencia, la innovación en métodos de enseñanza, y la capacidad de adaptación a nuevas tecnologías y enfoques pedagógicos."
+        'En el departamento de Matemática Aplicada, la edad habitual de los docentes es de 60 a 70 años, una edad relativamente avanzada. Sin embargo, la edad promedio es de 50 a 60 años')
 
         data_filtred1=data[data['Departamento']=='Matematica Aplicada']
         ages1=[] 
@@ -399,8 +380,8 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
 
 
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")  
-
+        st.write("Un análisis que se centra en la distribución de género dentro de la facultad nos ayuda a identificar posibles disparidades. Los resultados de este análisis en este departamento demostraron que la mayoría son mujeres, con una pequeña diferencia respecto a los hombres.")
+        
         cant_gender=[]#Aqui se almacena la cantidad de cada genero
         cant_woman=0
         cant_man=0
@@ -422,10 +403,12 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.plotly_chart(fig7)
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
-        df = pd.read_csv('antiguedad-matematica.csv')
+        st.write("La experiencia de los profesores juega un papel crucial en la calidad de la educación impartida."
+        'El siguiente gráfico de barras muestra una comparación del promedio de años de experiencia de los profesores de cada departamento.'
+        'El departamento de Matemática Aplicada se ubica como el departamento con más años de experiencia en comparación con los demás.')
+    
         # Calcular los promedios de los años de servicio
-        promedios = df.groupby('Departamento')['Años de servicio'].mean()
+        promedios = data.groupby('Departamento')['Annos de servicio'].mean()
         colors = ['blue' if Departamento == 'Matematica Aplicada' else 'gray' for Departamento in promedios.index]
         fig = go.Figure(data = [go.Bar(x=promedios.index,y=promedios,marker_color=colors)])
         fig.update_layout(
@@ -434,24 +417,6 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
             yaxis_title = 'Años de servicio',
             bargap = 0.1
         )
-        st.plotly_chart(fig)
-        
-        st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
-        df = pd.read_csv('antiguedad-matematica.csv')
-
-        # Filtrar los datos para el departamento 1
-        df_departamento1 = df[df['Departamento'] == 'Matematica Aplicada']
-
-        # Contar la cantidad de profesores por categoría científica
-        categorias_count = df_departamento1['Categoría Científica'].value_counts()
-
-        # Crear el gráfico de pastel
-        fig = px.pie(categorias_count, values=categorias_count.values, names=categorias_count.index,
-                     title='Cantidad de Profesores por Categoría Científica en el Departamento',
-                    color=categorias_count.index, 
-                    color_discrete_sequence=px.colors.sequential.Blues_r)
-
         st.plotly_chart(fig)    
 
     elif subtema_seleccionado == "Departamento de Computación 1":
@@ -460,7 +425,8 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.divider()
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+        st.write(" La edad de los docentes puede influir en diversos factores, como la experiencia, la innovación en métodos de enseñanza, y la capacidad de adaptación a nuevas tecnologías y enfoques pedagógicos."
+        'Gran parte del claustro de este departamento tiene una edad de 20 a 30 años, y la misma proporción se observa en el rango de 30 a 40 años, siendo este último el rango de la edad promedio. ')
 
         data_filtred2=data[data['Departamento']=='Computacion I']
         ages2=[] 
@@ -519,8 +485,8 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.plotly_chart(fig5)
 
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")    
-
+        st.write("Un análisis que se centra en la distribución de género dentro de la facultad nos ayuda a identificar posibles disparidades. Los resultados muestran que en este departamento hay la misma cantidad de hombres que de mujeres. ")
+        
         cant_gender2=[]#Aqui se almacena la cantidad de cada genero
         cant_woman2=0
         cant_man2=0
@@ -542,10 +508,13 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.plotly_chart(fig9)
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
-        df = pd.read_csv('antiguedad-matematica.csv')
+        st.write("La experiencia de los profesores juega un papel crucial en la calidad de la educación impartida."
+        'El siguiente gráfico de barras muestra una comparación del promedio de años de experiencia de los profesores de cada departamento.'
+        'El departamento de Computación I se ubica en último lugar en cuanto a experiencia promedio de sus profesores, en comparación con los demás departamentos.')
+        
+
         # Calcular los promedios de los años de servicio
-        promedios = df.groupby('Departamento')['Años de servicio'].mean()
+        promedios = data.groupby('Departamento')['Annos de servicio'].mean()
         colors = ['blue' if Departamento == 'Computacion I' else 'gray' for Departamento in promedios.index]
         fig = go.Figure(data = [go.Bar(x=promedios.index,y=promedios,marker_color=colors)])
         fig.update_layout(
@@ -554,24 +523,6 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
             yaxis_title = 'Años de servicio',
             bargap = 0.1
         )
-        st.plotly_chart(fig)
-        
-        st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
-        df = pd.read_csv('antiguedad-matematica.csv')
-
-        # Filtrar los datos para el departamento 1
-        df_departamento1 = df[df['Departamento'] == 'Computacion I']
-
-        # Contar la cantidad de profesores por categoría científica
-        categorias_count = df_departamento1['Categoría Científica'].value_counts()
-
-        # Crear el gráfico de pastel
-        fig = px.pie(categorias_count, values=categorias_count.values, names=categorias_count.index,
-                     title='Cantidad de Profesores por Categoría Científica en el Departamento',
-                    color=categorias_count.index, 
-                    color_discrete_sequence=px.colors.sequential.Blues_r)
-
         st.plotly_chart(fig)     
 
         
@@ -581,7 +532,8 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.divider()
 
         st.markdown("### 1. ¿Cuál es la edad promedio de los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
+        st.write(" La edad de los docentes puede influir en diversos factores, como la experiencia, la innovación en métodos de enseñanza, y la capacidad de adaptación a nuevas tecnologías y enfoques pedagógicos."
+        'En el departamento de Computación II, la mayoría de los profesores se encuentran en el rango de 70 a 80 años, una edad bastante avanzada. Su edad promedio se ubica entre 60 y 70 años, no muy distante de la mayoría. En este departamento, no se encuentran profesores muy jóvenes, ya que no hay representantes en el rango de 20 a 30 años, lo que podría indicar una posible falta de innovación proveniente de la juventud.')
 
         data_filtred3=data[data['Departamento']=='Computacion II']
         ages3=[] 
@@ -640,7 +592,7 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.plotly_chart(fig6)
 
         st.markdown("### 2.¿Cuál es la distribución de género entre los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico") 
+        st.write(" Un análisis que se centra en la distribución de género dentro de la facultad nos ayuda a identificar posibles disparidades. Los resultados muestran que en este departamento hay la misma cantidad de hombres que de mujeres.") 
 
         cant_gender3=[]#Aqui se almacena la cantidad de cada genero
         cant_woman3=0
@@ -663,10 +615,12 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
         st.plotly_chart(fig10)   
 
         st.markdown("### 3.¿Cuántos años de servicio tienen en promedio los profesores?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
-        df = pd.read_csv('antiguedad-matematica.csv')
+        st.write("La experiencia de los profesores juega un papel crucial en la calidad de la educación impartida."
+        'El siguiente gráfico de barras muestra una comparación del promedio de años de experiencia de los profesores de cada departamento.'
+        'En el caso del departamento de Computación II, es el segundo con más años de experiencia, pero solo lo separa una pequeña diferencia del primero.')
+        
         # Calcular los promedios de los años de servicio
-        promedios = df.groupby('Departamento')['Años de servicio'].mean()
+        promedios = data.groupby('Departamento')['Annos de servicio'].mean()
         colors = ['blue' if Departamento == 'Computacion II' else 'gray' for Departamento in promedios.index]
         fig = go.Figure(data = [go.Bar(x=promedios.index,y=promedios,marker_color=colors)])
         fig.update_layout( 
@@ -675,25 +629,7 @@ elif seccion_seleccionada == "Entre Cátedras y Despachos: Mapeando la Estructur
             yaxis_title = 'Años de servicio',
             bargap = 0.1
         )
-        st.plotly_chart(fig)        
-
-        st.markdown("### 4.¿Cuántos profesores tienen una categoría científica y cuáles son estas categorías?")
-        st.write(" Aqui el analisis y entre el análisis y la pregunta un grafico")
-        df = pd.read_csv('antiguedad-matematica.csv')
-
-        # Filtrar los datos para el departamento 1
-        df_departamento1 = df[df['Departamento'] == 'Computacion II']
-
-        # Contar la cantidad de profesores por categoría científica
-        categorias_count = df_departamento1['Categoría Científica'].value_counts()
-
-        # Crear el gráfico de pastel
-        fig = px.pie(categorias_count, values=categorias_count.values, names=categorias_count.index,
-                     title='Cantidad de Profesores por Categoría Científica en el Departamento',
-                    color=categorias_count.index, 
-                    color_discrete_sequence=px.colors.sequential.Blues_r)
-
-        st.plotly_chart(fig)       
+        st.plotly_chart(fig)               
 
     
 elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Investigador del Profesorado":
@@ -741,14 +677,12 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
         if row['Miembro del consejo científico'] == 1:
             edges.append(Edge(source=consejo_cientifico_node.id, target=profesor_id))
 
-    # Configuración del gráfico
     config = Config(width=950,
                     height=950,
                     directed=True, 
                     physics=True, 
                     hierarchical=False)
 
-    # Generar el gráfico
     return_value = agraph(nodes=nodes, 
                           edges=edges, 
                           config=config)
@@ -756,7 +690,7 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
     st.divider()
     st.header("Grupos de investigación")
     st.write("Analisis e introducción de los grupos de investigación")
-    # Contar la cantidad de profesores por grupo de investigación
+    
     group_counts = df['Grupo de investigación'].value_counts()
 
     # Crear el gráfico de barras con Plotly
@@ -766,7 +700,6 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
         marker_color=px.colors.sequential.Blues_r
     )])
 
-    # Personalizar el gráfico
     fig.update_layout(
         title='Cantidad de Profesores por Grupo de Investigación',
         xaxis_title='Grupos de Investigación',
@@ -774,7 +707,6 @@ elif seccion_seleccionada == "Más que Docentes: Profundizando en el Perfil Inve
         bargap=0.1
     )
 
-    # Mostrar el gráfico en Streamlit
     st.plotly_chart(fig, use_container_width=True)
     
     st.divider()
