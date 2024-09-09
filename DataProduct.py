@@ -1038,5 +1038,3 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
 
         # Mostrar el gráfico en Streamlit
         st.plotly_chart(fig)
-
-
