@@ -1043,10 +1043,3 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
         st.plotly_chart(fig)
 
 
-    elif opcion_seleccionada == "5. Comparación de Género en Programas de Maestría":
-        st.markdown("### ¿Cuál es la proporción de hombres y mujeres que enseñan en programas de maestría?")
-        st.write("Examina si hay diferencias significativas en la representación de género en la enseñanza de maestría.")
-    
-    elif opcion_seleccionada == "6. Categoría Científica y Años de Servicio":
-        st.markdown("### ¿Los profesores con más años de servicio tienden a tener categorías científicas más altas?")
-        st.write("Compara la antigüedad con la categoría científica para identificar tendencias.")
