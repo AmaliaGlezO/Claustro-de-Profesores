@@ -943,22 +943,10 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
     opciones = [
         "1. Antigüedad y Cargo",
         "2. Género y Cargo",
-        "3. Categoría Científica y Participación en Investigación",
-        "4. Edad y Participación en Investigación",
-        "5. Antigüedad y Participación en Grupos de Investigación",
-        "6. Distribución de Cargos por Departamento",
-        "7. Comparación de Género en Programas de Maestría",
-        "8. Categoría Científica y Años de Servicio",
-        "9. Participación en Grupos de Investigación por Departamento",
-        "10. Antigüedad y Clasificación por Escala",
-        "11. Impacto de la Categoría Científica en la Enseñanza de Maestría",
-        "12. Años de Servicio y Género",
-        "13. Participación en Grupos de Investigación y Cargo",
-        "14. Antigüedad y Formación Académica",
-        "15. Comparación de Departamentos en Términos de Diversidad",
-        "16. Relación entre Antigüedad y Categoría Científica",
-        "17. Distribución de Profesores de Maestría",
-        "18. Participación en Grupos de Investigación según Cargo"
+        "3. Edad y Participación en Investigación",
+        "4. Distribución de Cargos por Departamento",
+        "5. Comparación de Género en Programas de Maestría",
+        "6. Dr y Años de Servicio"
     ]
     
     # Selección de opción en la barra lateral
@@ -1015,8 +1003,8 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
         # Mostrar el gráfico en Streamlit
         st.plotly_chart(fig)
 
-    elif opcion_seleccionada == "3. Categoría Científica y Participación en Investigación":
-        st.markdown("### ¿Los profesores con categorías científicas más altas participan más en grupos de investigación?")
+    elif opcion_seleccionada == "3. Edad y Participación en Investigación":
+        st.markdown("### ¿Hay diferencias en la participación en grupos de investigación según la edad de los profesores?")
         st.write("Compara la participación en investigación entre diferentes categorías científicas.")
 
         # Filtrar los miembros del consejo científico
@@ -1027,15 +1015,7 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
         st.write(nombres_apellidos)
 
     
-    elif opcion_seleccionada == "4. Edad y Participación en Investigación":
-        st.markdown("### ¿Hay diferencias en la participación en grupos de investigación según la edad de los profesores?")
-        st.write("Examina si los profesores más jóvenes tienden a participar más en investigación que los mayores.")
-    
-    elif opcion_seleccionada == "5. Antigüedad y Participación en Grupos de Investigación":
-        st.markdown("### ¿Los profesores con más años de servicio participan menos en grupos de investigación?")
-        st.write("Compara la antigüedad de los profesores con su nivel de participación en investigación.")
-    
-    elif opcion_seleccionada == "6. Distribución de Cargos por Departamento":
+    elif opcion_seleccionada == "4. Distribución de Cargos por Departamento":
         st.markdown("### ¿Cómo se distribuyen los diferentes cargos entre los departamentos?")
         st.write("Analiza si ciertos departamentos tienen más profesores en posiciones de liderazgo.")
     
@@ -1063,51 +1043,10 @@ if seccion_seleccionada == "Desentrañando la Matriz: Un Análisis Comparativo d
         st.plotly_chart(fig)
 
 
-    elif opcion_seleccionada == "7. Comparación de Género en Programas de Maestría":
+    elif opcion_seleccionada == "5. Comparación de Género en Programas de Maestría":
         st.markdown("### ¿Cuál es la proporción de hombres y mujeres que enseñan en programas de maestría?")
         st.write("Examina si hay diferencias significativas en la representación de género en la enseñanza de maestría.")
     
-    elif opcion_seleccionada == "8. Categoría Científica y Años de Servicio":
+    elif opcion_seleccionada == "6. Categoría Científica y Años de Servicio":
         st.markdown("### ¿Los profesores con más años de servicio tienden a tener categorías científicas más altas?")
         st.write("Compara la antigüedad con la categoría científica para identificar tendencias.")
-    
-    elif opcion_seleccionada == "9. Participación en Grupos de Investigación por Departamento":
-        st.markdown("### ¿Qué departamentos tienen mayor o menor participación en grupos de investigación?")
-        st.write("Analiza la participación en investigación entre diferentes departamentos.")
-    
-    elif opcion_seleccionada == "10. Antigüedad y Clasificación por Escala":
-        st.markdown("### ¿Cómo se relaciona la antigüedad de los profesores con su clasificación por escala (docente o no docente)?")
-        st.write("Examina si hay diferencias en la antigüedad promedio entre docentes y no docentes.")
-    
-    elif opcion_seleccionada == "11. Impacto de la Categoría Científica en la Enseñanza de Maestría":
-        st.markdown("### ¿Los profesores con categorías científicas más altas son más propensos a enseñar en programas de maestría?")
-        st.write("Compara la participación en la enseñanza de maestría según la categoría científica.")
-    
-    elif opcion_seleccionada == "12. Años de Servicio y Género":
-        st.markdown("### ¿Existen diferencias en la antigüedad promedio entre hombres y mujeres en la facultad?")
-        st.write("Analiza si hay una diferencia significativa en los años de servicio según el género.")
-    
-    elif opcion_seleccionada == "13. Participación en Grupos de Investigación y Cargo":
-        st.markdown("### ¿Los decanos participan más o menos en grupos de investigación en comparación con otros cargos?")
-        st.write("Compara la participación en investigación entre decanos y otros cargos.")
-    
-    elif opcion_seleccionada == "14. Antigüedad y Formación Académica":
-        st.markdown("### ¿Los profesores con más años de servicio tienden a tener títulos académicos más altos (por ejemplo, doctorados)?")
-        st.write("Examina la relación entre antigüedad y nivel educativo.")
-    
-    elif opcion_seleccionada == "15. Comparación de Departamentos en Términos de Diversidad":
-        st.markdown("### ¿Cómo se compara la diversidad de género y categoría científica entre los diferentes departamentos?")
-        st.write("Analiza la diversidad en términos de género y categorías científicas en cada departamento.")
-    
-    elif opcion_seleccionada == "16. Relación entre Antigüedad y Categoría Científica":
-        st.markdown("### ¿Hay alguna relación entre la antigüedad y la categoría científica de los profesores?")
-        st.write("Examina si los profesores con más años de servicio tienden a tener categorías científicas más altas.")
-    
-    elif opcion_seleccionada == "17. Distribución de Profesores de Maestría":
-        st.markdown("### ¿Cómo se distribuyen los profesores de maestría entre los diferentes departamentos?")
-        st.write("Analiza si hay departamentos con mayor o menor representación de profesores de maestría.")
-    
-    elif opcion_seleccionada == "18. Participación en Grupos de Investigación según Cargo":
-        st.markdown("### ¿Existen diferencias en la participación en grupos de investigación según el cargo?")
-        st.write("Compara la participación en grupos de investigación entre diferentes cargos (por ejemplo, decanos versus profesores auxiliares).")
-
